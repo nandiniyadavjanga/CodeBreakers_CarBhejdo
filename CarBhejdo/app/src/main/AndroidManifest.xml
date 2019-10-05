@@ -1,38 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.carbhejdo">
+<<<<<<< Original<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
+package="com.example.carbhejdo">
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".Singlecar_Activity"></activity>
-=======
-<<<<<<< HEAD
-        <activity android:name=".MainScreen"></activity>
-=======
-<<<<<<< HEAD
-        <activity android:name=".BuyCarActivity"></activity>
-=======
->>>>>>> 9bf8d2a4b206b4d95adfc2303741dae54cf4baff
->>>>>>> dfe12bfc039f0b52d24bfc328099777a8a453000
->>>>>>> d15c8caca4f7b6c0b3161277d8cf658f6a5cc93c
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<application
+    android:allowBackup="true"
+    android:icon="@mipmap/ic_launcher"
+    android:label="@string/app_name"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <
+    <
+    <
+    <
+    <
+    <
+    < HEAD
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+    <activity android:name=".Singlecar_Activity"></activity>
+    =======
+    <
+    <
+    <
+    <
+    <
+    <
+    < HEAD
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-    </application>
+    <activity android:name=".MainScreen"></activity>
+    =======
+    <
+    <
+    <
+    <
+    <
+    <
+    < HEAD
 
-</manifest>
+    <activity android:name=".BuyCarActivity"></activity>
+    =======
+    >>>>>>> 9bf8d2a4b206b4d95adfc2303741dae54cf4baff
+    >>>>>>> dfe12bfc039f0b52d24bfc328099777a8a453000
+    >>>>>>> d15c8caca4f7b6c0b3161277d8cf658f6a5cc93c
+    <activity android:name=".ProfileActivity" />
+    <activity android:name=".MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+    <meta-data
+        android:name="preloaded_fonts"
+        android:resource="@array/preloaded_fonts" />
+</application>
+
+</manifest>=======<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+<application>
+    <activity android:name="com.example.carbhejdo.Filter_Activity"></activity>
+</application>
+</manifest>>>>>>>> Added
