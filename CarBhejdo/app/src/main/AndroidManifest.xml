@@ -1,4 +1,5 @@
-<<<<<<< Original<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="com.example.carbhejdo">
 
 <application
@@ -8,39 +9,15 @@ package="com.example.carbhejdo">
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <
-    <
-    <
-    <
-    <
-    <
-    < HEAD
+
 
     <activity android:name=".Singlecar_Activity"></activity>
-    =======
-    <
-    <
-    <
-    <
-    <
-    <
-    < HEAD
 
     <activity android:name=".MainScreen"></activity>
-    =======
-    <
-    <
-    <
-    <
-    <
-    <
-    < HEAD
+
+
 
     <activity android:name=".BuyCarActivity"></activity>
-    =======
-    >>>>>>> 9bf8d2a4b206b4d95adfc2303741dae54cf4baff
-    >>>>>>> dfe12bfc039f0b52d24bfc328099777a8a453000
-    >>>>>>> d15c8caca4f7b6c0b3161277d8cf658f6a5cc93c
     <activity android:name=".ProfileActivity" />
     <activity android:name=".MainActivity">
         <intent-filter>
@@ -54,10 +31,4 @@ package="com.example.carbhejdo">
         android:name="preloaded_fonts"
         android:resource="@array/preloaded_fonts" />
 </application>
-
-</manifest>=======<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-<application>
-    <activity android:name="com.example.carbhejdo.Filter_Activity"></activity>
-</application>
-</manifest>>>>>>>> Added
+</manifest>
