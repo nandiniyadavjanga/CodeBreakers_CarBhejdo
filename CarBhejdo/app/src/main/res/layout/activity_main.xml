@@ -110,6 +110,7 @@
             android:layout_width="196dp"
             android:layout_height="67dp"
             android:background="#60B0F4"
+            android:onClick="onClck"
             android:padding="10dp"
             android:paddingLeft="30dp"
             android:text="Sign-In"
