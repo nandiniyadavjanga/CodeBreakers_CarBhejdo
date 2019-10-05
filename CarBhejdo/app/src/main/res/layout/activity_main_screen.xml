@@ -55,6 +55,7 @@
         android:fontFamily="@font/chewy"
         android:text="Car Bhejdo"
         android:textAlignment="center"
+        android:textColor="#020202"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/buy"
         app:layout_constraintEnd_toEndOf="parent"
