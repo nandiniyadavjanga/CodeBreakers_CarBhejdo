@@ -20,4 +20,14 @@ public class MainScreen extends AppCompatActivity {
         finish();
     }
 
+    public void on_buy_car(View v){
+        Intent ini = new Intent(this, BuyCarActivity.class);
+        startActivity(ini);
+    }
+
+    public void on_sell_car(View v){
+        Intent ini = new Intent(this, CarInfoActivity.class);
+        startActivity(ini);
+    }
+
 }

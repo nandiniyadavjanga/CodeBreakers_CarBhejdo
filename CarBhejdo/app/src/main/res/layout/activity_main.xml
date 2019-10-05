@@ -18,6 +18,7 @@
             android:layout_width="196dp"
             android:layout_height="64dp"
             android:background="#60B0F4"
+            android:onClick="on_sign_up"
             android:padding="10dp"
             android:paddingLeft="30dp"
             android:text="Sign-Up"

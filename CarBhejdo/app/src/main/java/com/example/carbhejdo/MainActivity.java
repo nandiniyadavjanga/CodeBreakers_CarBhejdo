@@ -20,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(ini);
     }
 
+    public void on_sign_up(View v){
+        Intent ini = new Intent(this, ProfileActivity.class);
+        startActivity(ini);
+    }
+
     public void onActivityResult(int requestCode,int resultCode,Intent signIn){
         if(requestCode==REQUEST){
             if(resultCode==RESPONSE){

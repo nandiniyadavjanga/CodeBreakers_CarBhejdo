@@ -179,7 +179,7 @@
         android:layout_width="117dp"
         android:layout_height="36dp"
         android:background="#60B0F4"
-        android:text="Price"
+        android:text="Post"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
