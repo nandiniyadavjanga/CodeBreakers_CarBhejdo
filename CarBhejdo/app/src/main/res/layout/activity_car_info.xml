@@ -179,6 +179,7 @@
         android:layout_width="117dp"
         android:layout_height="36dp"
         android:background="#60B0F4"
+        android:onClick="after_posting_car_for_selling"
         android:text="Post"
         android:textAlignment="center"
         android:textSize="18sp"
