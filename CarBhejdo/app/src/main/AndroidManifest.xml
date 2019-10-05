@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".MainScreen"></activity>
+=======
+<<<<<<< HEAD
+        <activity android:name=".BuyCarActivity"></activity>
+=======
+>>>>>>> 9bf8d2a4b206b4d95adfc2303741dae54cf4baff
+>>>>>>> dfe12bfc039f0b52d24bfc328099777a8a453000
         <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
