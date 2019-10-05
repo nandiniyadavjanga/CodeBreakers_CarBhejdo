@@ -15,4 +15,10 @@ public class BuyCarActivity extends AppCompatActivity {
     }
 
 
+
+    public void car_detail_info(View v){
+        Intent ini = new Intent(this, Singlecar_Activity.class);
+        startActivity(ini);
+    }
+
 }
