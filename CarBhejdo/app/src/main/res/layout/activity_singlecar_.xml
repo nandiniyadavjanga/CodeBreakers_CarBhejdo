@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5D5992"
+    android:background="#9F9FEB"
     tools:context=".Singlecar_Activity">
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="403dp"
         android:layout_height="27dp"
-        android:background="@color/colorAccent"
         android:text="Year : 2005"
         android:textColor="#030303"
         android:textSize="18dp"
@@ -26,7 +25,6 @@
         android:id="@+id/textView9"
         android:layout_width="403dp"
         android:layout_height="27dp"
-        android:background="@color/colorAccent"
         android:text="Mileage: 10kmiles"
         android:textColor="#030303"
         android:textSize="18dp"
@@ -41,7 +39,6 @@
         android:id="@+id/textView10"
         android:layout_width="403dp"
         android:layout_height="27dp"
-        android:background="@color/colorAccent"
         android:text="Location: Maryville"
         android:textColor="#030303"
         android:textSize="18dp"
@@ -56,7 +53,6 @@
         android:id="@+id/textView11"
         android:layout_width="403dp"
         android:layout_height="27dp"
-        android:background="@color/colorAccent"
         android:text="Contact No: 1234567890"
         android:textColor="#030303"
         android:textSize="18dp"
@@ -71,7 +67,6 @@
         android:id="@+id/textView12"
         android:layout_width="403dp"
         android:layout_height="27dp"
-        android:background="@color/colorAccent"
         android:text="OwnerName: Abhi"
         android:textColor="#030303"
         android:textSize="18dp"
@@ -94,7 +89,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.024"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@drawable/profile" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -124,7 +119,6 @@
         android:id="@+id/textView6"
         android:layout_width="403dp"
         android:layout_height="27dp"
-        android:background="@color/colorAccent"
         android:text="Model : Altima "
         android:textColor="#030303"
         android:textSize="18dp"
@@ -139,7 +133,6 @@
         android:id="@+id/textView7"
         android:layout_width="403dp"
         android:layout_height="27dp"
-        android:background="@color/colorAccent"
         android:text="Price: 15000"
         android:textColor="#030303"
         android:textSize="18dp"
@@ -155,21 +148,10 @@
         android:layout_width="72dp"
         android:layout_height="53dp"
         android:background="@drawable/applogo"
+        android:onClick="onLogoClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/textView11"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="72dp"
-        android:layout_height="53dp"
-        android:background="@drawable/filterimage1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.004" />

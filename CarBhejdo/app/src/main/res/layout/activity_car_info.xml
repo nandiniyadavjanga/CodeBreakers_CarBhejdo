@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="#9F9FEB"
     tools:context=".CarInfoActivity">
 
     android:background="#5D5992" android:layout_height="match_parent"
@@ -118,9 +118,9 @@
         android:id="@+id/num12"
         android:layout_width="117dp"
         android:layout_height="36dp"
-        android:background="#60B0F4"
         android:text="Year"
         android:textAlignment="center"
+        android:textColor="#0A0A0A"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,9 +133,9 @@
         android:id="@+id/num9"
         android:layout_width="117dp"
         android:layout_height="36dp"
-        android:background="#60B0F4"
         android:text="Location"
         android:textAlignment="center"
+        android:textColor="#0A0A0A"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -148,9 +148,9 @@
         android:id="@+id/num10"
         android:layout_width="117dp"
         android:layout_height="36dp"
-        android:background="#60B0F4"
         android:text="Miles Driven"
         android:textAlignment="center"
+        android:textColor="#0A0A0A"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -163,9 +163,9 @@
         android:id="@+id/num13"
         android:layout_width="117dp"
         android:layout_height="36dp"
-        android:background="#60B0F4"
         android:text="Price"
         android:textAlignment="center"
+        android:textColor="#0A0A0A"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,27 +175,12 @@
         app:layout_constraintVertical_bias="0.841" />
 
     <TextView
-        android:id="@+id/num14"
-        android:layout_width="117dp"
-        android:layout_height="36dp"
-        android:background="#60B0F4"
-        android:onClick="after_posting_car_for_selling"
-        android:text="Post"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941" />
-
-    <TextView
         android:id="@+id/num11"
         android:layout_width="117dp"
         android:layout_height="36dp"
-        android:background="#60B0F4"
         android:text="Car Name"
         android:textAlignment="center"
+        android:textColor="#0A0A0A"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -205,42 +190,12 @@
         app:layout_constraintVertical_bias="0.428" />
 
     <TextView
-        android:id="@+id/num15"
-        android:layout_width="117dp"
-        android:layout_height="36dp"
-        android:background="#60B0F4"
-        android:text="Sell Car"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202" />
-
-    <TextView
-        android:id="@+id/num16"
-        android:layout_width="117dp"
-        android:layout_height="55dp"
-        android:background="#60B0F4"
-        android:text="Add Car Images"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.301" />
-
-    <TextView
         android:id="@+id/num7"
         android:layout_width="117dp"
         android:layout_height="36dp"
-        android:background="#60B0F4"
         android:text="Model No."
         android:textAlignment="center"
+        android:textColor="#0A0A0A"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -275,5 +230,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.07"
         app:srcCompat="@drawable/applogo" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onPostClick"
+        android:text="POST"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934" />
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="92dp"
+        android:layout_height="77dp"
+        android:text="Add Vehicle Images"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.252" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

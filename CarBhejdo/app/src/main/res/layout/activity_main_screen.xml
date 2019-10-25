@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5D5992"
+    android:background="#9F9FEB"
     tools:context=".MainScreen">
 
     <TextView
         android:id="@+id/buy"
         android:layout_width="148dp"
         android:layout_height="55dp"
-        android:background="#60B0F4"
-        android:onClick="on_buy_car"
+        android:onClick="onBuyCarClick"
         android:text="Buy Car"
         android:textAlignment="center"
+        android:textColor="#0A0A0A"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +27,10 @@
         android:id="@+id/buy2"
         android:layout_width="148dp"
         android:layout_height="55dp"
-        android:background="#60B0F4"
-        android:onClick="on_sell_car"
+        android:onClick="onSellCarClick"
         android:text="Sell Car"
         android:textAlignment="center"
+        android:textColor="#0A0A0A"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,18 +65,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:layout_constraintVertical_bias="0.396" />
-
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onBack"
-        android:text="BACK"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

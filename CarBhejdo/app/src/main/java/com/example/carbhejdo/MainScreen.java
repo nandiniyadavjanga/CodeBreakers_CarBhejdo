@@ -14,18 +14,18 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
     }
 
-    public void onBack(View v){
-        Intent backintent = new Intent();
-        setResult(MainActivity.RESPONSE,backintent);
-        finish();
-    }
+//    public void onBack(View v){
+//        Intent backintent = new Intent();
+//        setResult(MainActivity.RESPONSE,backintent);
+//        finish();
+//    }
 
-    public void on_buy_car(View v){
-        Intent ini = new Intent(this, BuyCarActivity.class);
+    public void onBuyCarClick(View v){
+        Intent ini = new Intent(this, BuyCarListActivity.class);
         startActivity(ini);
     }
 
-    public void on_sell_car(View v){
+    public void onSellCarClick(View v){
         Intent ini = new Intent(this, CarInfoActivity.class);
         startActivity(ini);
     }

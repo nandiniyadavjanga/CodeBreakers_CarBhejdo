@@ -9,13 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".BuyCarListActivity"></activity>
+        <activity android:name=".SignUpProfileActivity" />
+        <activity android:name=".MenuActivity" />
         <activity android:name=".CarInfoActivity" />
         <activity android:name=".FilterActivity" />
         <activity android:name=".Singlecar_Activity" />
         <activity android:name=".MainScreen" />
-        <activity android:name=".BuyCarActivity" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

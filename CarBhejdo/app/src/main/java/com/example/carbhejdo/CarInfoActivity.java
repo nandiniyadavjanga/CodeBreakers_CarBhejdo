@@ -14,8 +14,8 @@ public class CarInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_car_info);
     }
 
-    public void after_posting_car_for_selling(View v){
-        Intent ini = new Intent(this, MainScreen.class);
+    public void onPostClick(View v){
+        Intent ini = new Intent(this, BuyCarListActivity.class);
         startActivity(ini);
     }
 }
