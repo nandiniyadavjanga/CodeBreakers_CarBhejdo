@@ -25,16 +25,16 @@ public class BuyCarListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         List<ModelClass> modelClassList = new ArrayList<>();
-        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $5000",""));
-        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $72000","" ));
-        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $1300",""));
-        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $5000",""));
-        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $5000",""));
-        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $5000",""));
-        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $5000",""));
-        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $5000",""));
-        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $5000",""));
-        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $5000",""));
+        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $5000","Miles Driven: 11000"));
+        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $72000","Miles Driven: 11000" ));
+        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $1300","Miles Driven: 11000"));
+        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $5000","Miles Driven: 11000"));
+        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $5000","Miles Driven: 11000"));
+        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $5000","Miles Driven: 11000"));
+        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $5000","Miles Driven: 11000"));
+        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $5000","Miles Driven: 11000"));
+        modelClassList.add(new ModelClass(R.drawable.altima, "Altima 800", "Price: $5000","Miles Driven: 11000"));
+        modelClassList.add(new ModelClass(R.drawable.kia, "Kia", "Price: $5000","Miles Driven: 11000"));
 
         Adapter adapter = new Adapter(modelClassList);
         recyclerView.setAdapter(adapter);
