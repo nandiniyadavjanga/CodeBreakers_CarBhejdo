@@ -20,6 +20,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        tv = (TextView) findViewById(R.id.tv);
+        iv = (ImageView) findViewById(R.id.iv);
+        Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mytransition);
+        tv.startAnimation(myanim);
+        iv.startAnimation(myanim);
+         final Intent i = new Intent(this, SIgninSignupActivity.class);
+        Thread timer = new Thread(){
+            public void run(){
+                try{
+                    sleep(2000);
+                }
+                catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                finally {
+startActivity(i);
+finish();
+                }
+            }
+        }; timer.start();
     }
 }
