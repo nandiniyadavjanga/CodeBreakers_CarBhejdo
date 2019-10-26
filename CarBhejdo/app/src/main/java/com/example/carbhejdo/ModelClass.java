@@ -5,13 +5,13 @@ public class ModelClass {
     private int imageResource;
     private String title;
     private String body;
-    private String body2;
+    private String body1;
 
-    public ModelClass(int imageResource, String title, String body, String body2) {
+    public ModelClass(int imageResource, String title, String body, String body1) {
         this.imageResource = imageResource;
         this.title = title;
         this.body = body;
-        this.body2 = body2;
+        this.body1 = body1;
     }
 
     public int getImageResource() {
@@ -26,8 +26,8 @@ public class ModelClass {
         return body;
     }
 
-    public String getBody2() {
-        return body2;
+    public String getBody1() {
+        return body1;
     }
 }
 
