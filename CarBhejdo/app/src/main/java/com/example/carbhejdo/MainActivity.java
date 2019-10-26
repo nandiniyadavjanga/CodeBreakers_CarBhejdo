@@ -4,34 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-     public static final int REQUEST =1;
-    public static final int RESPONSE =0;
+    private TextView tv;
+    private ImageView iv;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
-
-    public void signInClck(View v){
-        Intent ini = new Intent(this, MainScreen.class);
-        startActivity(ini);
-    }
-
-    public void signUpClick(View v){
-        Intent ini = new Intent(this, SignUpProfileActivity.class);
-        startActivity(ini);
-    }
-
-//    public void onActivityResult(int requestCode,int resultCode,Intent signIn){
-//        if(requestCode==REQUEST){
-//            if(resultCode==RESPONSE){
-//
-//            }
-//        }
- //   }
-
-
 }
