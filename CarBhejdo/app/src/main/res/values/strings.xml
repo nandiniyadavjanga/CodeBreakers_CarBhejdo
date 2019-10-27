@@ -3,4 +3,7 @@
     <string name="title_activity_buy_car_list">BuyCarListActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">tNdtxzBA1mX3o1LBXMU7QpbqHhjOaFooRYbfUxar</string>
+    <string name="back4app_client_key">cOOSt9AAHrgJTfi2VpFBWuAm1wUhVJiToztr8MPO</string>
 </resources>
