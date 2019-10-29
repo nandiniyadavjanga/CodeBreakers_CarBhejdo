@@ -30,35 +30,24 @@ public class SignUpProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_profile);
 
-        Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId(getString(R.string.back4app_app_id))
-                // if defined
-                .clientKey(getString(R.string.back4app_client_key))
-                .server(getString(R.string.back4app_server_url))
-                .build()
-        );
-
-        ParseInstallation.getCurrentInstallation().saveInBackground();
+    }
 
 
 
-        Button singup_action =  findViewById(R.id.singup_action);
-        singup_action.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText full_name = findViewById(R.id.full_name);
-                String fullname_string = full_name.getText().toString();
-                EditText email_signup = findViewById(R.id.email_signup);
-                String email_signup_string = email_signup.getText().toString();
-                EditText phone_signup = findViewById(R.id.phone_signup);
-                String phone_signup_string = phone_signup.getText().toString();
-                EditText locationsignup = findViewById(R.id.locationsignup);
-                String locationsignup_string = locationsignup.getText().toString();
-                EditText passwordsingup = findViewById(R.id.passwordsingup);
-                String passwordsingup_string = passwordsingup.getText().toString();
+    public void onSignUpClick(View v) throws InterruptedException {
+        EditText full_name = findViewById(R.id.full_name);
+        String fullname_string = full_name.getText().toString();
+        EditText email_signup = findViewById(R.id.email_signup);
+        String email_signup_string = email_signup.getText().toString();
+        EditText phone_signup = findViewById(R.id.phone_signup);
+        String phone_signup_string = phone_signup.getText().toString();
+        EditText locationsignup = findViewById(R.id.locationsignup);
+        String locationsignup_string = locationsignup.getText().toString();
+        EditText passwordsingup = findViewById(R.id.passwordsingup);
+        String passwordsingup_string = passwordsingup.getText().toString();
 
 
-                /*ParseQuery<ParseObject> ask = ParseQuery.getQuery("Car_Bejdho_User");
+                ParseQuery<ParseObject> ask = ParseQuery.getQuery("Car_Bejdho_User");
                 ask.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
@@ -66,37 +55,32 @@ public class SignUpProfileActivity extends AppCompatActivity {
                             row_id  = row_id +1;
                         }
                     }
-                });*/
-
-
-                final ParseObject tweety = new ParseObject("Car_Bejdho_User");
-                tweety.put("Id", row_id +1);
-                tweety.put("Name", fullname_string);
-                tweety.put("Email", email_signup_string);
-                tweety.put("Mobile",phone_signup_string);
-                tweety.put("Password",passwordsingup_string);
-                tweety.put("Location",locationsignup_string);
-
-                tweety.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        Toast.makeText(getApplicationContext(), "Error While creating user " +e , Toast.LENGTH_SHORT).show();
-                        Log.d("signup", "ObjectId sgnup " + tweety.getObjectId());
-                        Log.d("signup", "creation time " + tweety.getCreatedAt());
-                    }
                 });
-                Toast.makeText(getApplicationContext(), "Sucessfully created user for "+ fullname_string , Toast.LENGTH_SHORT).show();
-                Log.d("signup", "ObjectId post " + tweety.getObjectId());
 
-                //Intent ini = new Intent(this, MainScreen.class);
-                //startActivity(ini);
+        Log.d("signup", "testing log @ before exicuting" );
+        final ParseObject tweety = new ParseObject("Car_Bejdho_User");
+        tweety.put("Id", row_id +1);
+        tweety.put("Name", fullname_string);
+        tweety.put("Email", email_signup_string);
+        tweety.put("Mobile",phone_signup_string);
+        tweety.put("Password",passwordsingup_string);
+        tweety.put("Location",locationsignup_string);
+        Log.d("signup", "testing log @ after tweety" );
+        tweety.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                Log.d("signup", "exception is " + e);
+                Toast.makeText(getApplicationContext(), "Error While creating user " +e , Toast.LENGTH_SHORT).show();
+                Log.d("signup", "ObjectId sgnup " + tweety.getObjectId());
+                Log.d("signup", "creation time " + tweety.getCreatedAt());
             }
         });
+        Thread.sleep(5000);
+        Toast.makeText(getApplicationContext(), "Sucessfully created user for "+ fullname_string , Toast.LENGTH_SHORT).show();
+        Log.d("signup", "ObjectId post " + tweety.getObjectId());
 
 
 
-    }
-    public void onSignUpClick(View v){
         Intent ini = new Intent(this, MainScreen.class);
         startActivity(ini);
     }
