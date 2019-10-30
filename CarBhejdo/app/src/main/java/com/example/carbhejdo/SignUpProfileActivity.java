@@ -27,36 +27,16 @@ public class SignUpProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_profile);
+
 
     }
 
 
-
-    public void onSignUpClick(View v) throws InterruptedException {
-        EditText full_name = findViewById(R.id.full_name);
-        String fullname_string = full_name.getText().toString();
-        EditText email_signup = findViewById(R.id.email_signup);
-        String email_signup_string = email_signup.getText().toString();
-        EditText phone_signup = findViewById(R.id.phone_signup);
-        String phone_signup_string = phone_signup.getText().toString();
-        EditText locationsignup = findViewById(R.id.locationsignup);
-        String locationsignup_string = locationsignup.getText().toString();
-        EditText passwordsingup = findViewById(R.id.passwordsingup);
-        String passwordsingup_string = passwordsingup.getText().toString();
-
-
-                ParseQuery<ParseObject> ask = ParseQuery.getQuery("Car_Bejdho_User");
-                ask.findInBackground(new FindCallback<ParseObject>() {
-                    @Override
-                    public void done(List<ParseObject> objects, ParseException e) {
-                        for (ParseObject bird: objects){
-                            row_id  = row_id +1;
-                        }
-                    }
-                });
-
+    public void push_data(String fullname_string, String email_signup_string, String phone_signup_string, String passwordsingup_string, String locationsignup_string){
+        final String full_name = fullname_string;
         Log.d("signup", "testing log @ before exicuting" );
         final ParseObject tweety = new ParseObject("Car_Bejdho_User");
         tweety.put("Id", row_id +1);
@@ -69,15 +49,71 @@ public class SignUpProfileActivity extends AppCompatActivity {
         tweety.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                Log.d("signup", "exception is " + e);
-                Toast.makeText(getApplicationContext(), "Error While creating user " +e , Toast.LENGTH_SHORT).show();
-                Log.d("signup", "ObjectId sgnup " + tweety.getObjectId());
-                Log.d("signup", "creation time " + tweety.getCreatedAt());
+
+                if(e == null){
+                    Log.d("signup", "ObjectId sgnup " + tweety.getObjectId());
+                    Log.d("signup", "creation time " + tweety.getCreatedAt());
+                    Toast.makeText(getApplicationContext(), "Sucessfully created user for "+ full_name , Toast.LENGTH_SHORT).show();
+                    Log.d("signup", "ObjectId post " + tweety.getObjectId());
+                }
+                else {
+
+                    Log.d("signup", "exception is " + e);
+                    Toast.makeText(getApplicationContext(), "Error While creating user " + e, Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
-        Thread.sleep(5000);
-        Toast.makeText(getApplicationContext(), "Sucessfully created user for "+ fullname_string , Toast.LENGTH_SHORT).show();
-        Log.d("signup", "ObjectId post " + tweety.getObjectId());
+
+
+
+
+    }
+
+
+
+    public void parse_data_back4_app(String fullname_string, String email_signup_string, String phone_signup_string, String passwordsingup_string, String locationsignup_string){
+        ParseQuery<ParseObject> ask = ParseQuery.getQuery("Car_Bejdho_User");
+        ask.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                for (ParseObject bird: objects){
+                    String bird_name = bird.getString("Id");
+                    row_id = row_id +1;
+
+                    Toast.makeText(getApplicationContext(), "the parsing number of rows are  "+ row_id , Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+
+        });
+
+        push_data(fullname_string, email_signup_string, phone_signup_string,  passwordsingup_string,  locationsignup_string);
+    }
+
+
+
+    public void onSignUpClick(View v) throws InterruptedException {
+
+        EditText full_name = findViewById(R.id.full_name);
+        final String fullname_string = full_name.getText().toString();
+        EditText email_signup = findViewById(R.id.email_signup);
+        String email_signup_string = email_signup.getText().toString();
+        EditText phone_signup = findViewById(R.id.phone_signup);
+        String phone_signup_string = phone_signup.getText().toString();
+        EditText locationsignup = findViewById(R.id.locationsignup);
+        String locationsignup_string = locationsignup.getText().toString();
+        EditText passwordsingup = findViewById(R.id.passwordsingup);
+        String passwordsingup_string = passwordsingup.getText().toString();
+
+
+
+        //Toast.makeText(getApplicationContext(), "the number of rows are  "+ row_id , Toast.LENGTH_LONG).show();
+
+
+
+        parse_data_back4_app(fullname_string, email_signup_string, phone_signup_string,  passwordsingup_string,  locationsignup_string);
 
 
 
