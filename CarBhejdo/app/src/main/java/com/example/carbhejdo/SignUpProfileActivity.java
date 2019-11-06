@@ -1,13 +1,23 @@
 package com.example.carbhejdo;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,18 +32,65 @@ import com.parse.SaveCallback;
 import java.util.List;
 
 public class SignUpProfileActivity extends AppCompatActivity {
-
+private static final int PERMISSION_REQUEST=0;
+    private static final int RESULT_LOAD_IMAGE=1;
     int row_id = 0;
+    ImageView profileimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_profile);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+        != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSION_REQUEST);
+        }
+         profileimg = findViewById(R.id.profileimg);
+        Button  profilebtn = findViewById(R.id.profilebtn);
+        profilebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
 
 
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case PERMISSION_REQUEST:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "Permission granted",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(this, "Permission not granted",Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode){
+            case RESULT_LOAD_IMAGE:
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = data.getData();
+                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                    Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+                    cursor.moveToFirst();
+                    int columnIndex= cursor.getColumnIndex(filePathColumn[0]);
+                    String picturepath = cursor.getString(columnIndex);
+                    profileimg.setImageBitmap(BitmapFactory.decodeFile(picturepath));
+                }
+        }
+    }
 
     public void push_data(String fullname_string, String email_signup_string, String phone_signup_string, String passwordsingup_string, String locationsignup_string){
         final String full_name = fullname_string;
