@@ -86,8 +86,8 @@ public class SignUpProfileActivity extends AppCompatActivity {
 
 
 
-        final Button signup_button = findViewById(R.id.singup_action);
-        signup_button.setOnClickListener(new View.OnClickListener() {
+        final Button sign_action_button = findViewById(R.id.singup_action);
+        sign_action_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -145,7 +145,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        Intent intent = new Intent(SignUpProfileActivity.this, MainActivity.class);
+                        Intent intent = new Intent(SignUpProfileActivity.this, MainScreen.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }

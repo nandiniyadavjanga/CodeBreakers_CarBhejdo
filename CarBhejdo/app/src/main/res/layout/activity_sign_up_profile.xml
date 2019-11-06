@@ -28,7 +28,6 @@
         android:id="@+id/singup_action"
         android:layout_width="149dp"
         android:layout_height="49dp"
-        android:onClick="onSignUpClick"
         android:text="SIGN UP"
         android:textAlignment="center"
         android:textSize="24sp"

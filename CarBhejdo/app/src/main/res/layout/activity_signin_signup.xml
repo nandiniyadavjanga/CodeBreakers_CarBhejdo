@@ -14,7 +14,7 @@
             tools:context=".MainActivity">
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/password_singin"
                 android:layout_width="196dp"
                 android:layout_height="69dp"
                 android:background="#FFFFFF"
@@ -73,7 +73,7 @@
                 app:layout_constraintVertical_bias="0.501" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/sing_email_phone"
                 android:layout_width="196dp"
                 android:layout_height="69dp"
                 android:background="#FFFFFF"
@@ -98,10 +98,9 @@
                 app:srcCompat="@drawable/applogo" />
 
             <Button
-                android:id="@+id/button17"
+                android:id="@+id/login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="signInClck"
                 android:text="SIGN IN"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,10 +110,9 @@
                 app:layout_constraintVertical_bias="0.79" />
 
             <Button
-                android:id="@+id/button18"
+                android:id="@+id/singup_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="signUpClick"
                 android:text="SIGN UP"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
