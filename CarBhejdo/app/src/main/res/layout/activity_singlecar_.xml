@@ -82,7 +82,7 @@
         android:id="@+id/imageView5"
         android:layout_width="99dp"
         android:layout_height="94dp"
-        android:layout_marginBottom="544dp"
+        android:layout_marginBottom="572dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
@@ -97,10 +97,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.648"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.364"
+        app:layout_constraintVertical_bias="0.303"
         app:srcCompat="@drawable/car1" />
 
     <ImageView
