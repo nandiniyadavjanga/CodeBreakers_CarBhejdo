@@ -1,12 +1,31 @@
 package com.example.carbhejdo;
 
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Address;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
+
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import android.widget.Toast;
 import android.widget.Button;
 import android.app.AlertDialog;
@@ -20,6 +39,7 @@ import com.parse.SignUpCallback;
 
 public class SignUpProfileActivity extends AppCompatActivity {
 
+
     private EditText email;
     private EditText password;
     private EditText confirmpassword;
@@ -29,11 +49,31 @@ public class SignUpProfileActivity extends AppCompatActivity {
 
 
 
+    private static final int PERMISSION_REQUEST=0;
+    private static final int RESULT_LOAD_IMAGE=1;
+    int row_id = 0;
+    ImageView profileimg;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_profile);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+        != PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSION_REQUEST);
+        }
+         profileimg = findViewById(R.id.profileimg);
+        Button  profilebtn = findViewById(R.id.profilebtn);
+        profilebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
 
 
 
@@ -44,6 +84,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
         mobile=findViewById(R.id.phone_signup);
         address=findViewById(R.id.locationsignup);
 
+    
 
         final Button signup_button = findViewById(R.id.singup_action);
         signup_button.setOnClickListener(new View.OnClickListener() {
