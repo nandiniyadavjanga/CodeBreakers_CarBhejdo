@@ -77,7 +77,7 @@ private static final int PERMISSION_REQUEST=0;
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         switch (requestCode){
             case RESULT_LOAD_IMAGE:
                 if(resultCode == RESULT_OK){

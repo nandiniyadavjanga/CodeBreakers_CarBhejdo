@@ -224,14 +224,14 @@
 
     <ImageView
         android:id="@+id/profileimg"
-        android:layout_width="156dp"
-        android:layout_height="154dp"
+        android:layout_width="164dp"
+        android:layout_height="156dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.175"
-        app:srcCompat="@drawable/profile" />
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
