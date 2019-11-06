@@ -1,29 +1,33 @@
 package com.example.carbhejdo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.location.Address;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
-import com.parse.FindCallback;
-import com.parse.Parse;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-import com.parse.SaveCallback;
-
-import java.util.List;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class SignUpProfileActivity extends AppCompatActivity {
 
-    int row_id = 0;
+    private EditText email;
+    private EditText password;
+    private EditText confirmpassword;
+    private EditText username;
+    private EditText mobile;
+    private EditText address;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,92 +36,119 @@ public class SignUpProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_profile);
 
 
-    }
+
+        email = findViewById(R.id.email_signup);
+        password =  findViewById(R.id.passwordsingup);
+        confirmpassword =  findViewById(R.id.passwordsingup);
+        username=findViewById(R.id.full_name);
+        mobile=findViewById(R.id.phone_signup);
+        address=findViewById(R.id.locationsignup);
 
 
-    public void push_data(String fullname_string, String email_signup_string, String phone_signup_string, String passwordsingup_string, String locationsignup_string){
-        final String full_name = fullname_string;
-        Log.d("signup", "testing log @ before exicuting" );
-        final ParseObject tweety = new ParseObject("Car_Bejdho_User");
-        tweety.put("Id", row_id +1);
-        tweety.put("Name", fullname_string);
-        tweety.put("Email", email_signup_string);
-        tweety.put("Mobile",phone_signup_string);
-        tweety.put("Password",passwordsingup_string);
-        tweety.put("Location",locationsignup_string);
-        Log.d("signup", "testing log @ after tweety" );
-        tweety.saveInBackground(new SaveCallback() {
+        final Button signup_button = findViewById(R.id.singup_action);
+        signup_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void done(ParseException e) {
+            public void onClick(View view) {
 
-                if(e == null){
-                    Log.d("signup", "ObjectId sgnup " + tweety.getObjectId());
-                    Log.d("signup", "creation time " + tweety.getCreatedAt());
-                    Toast.makeText(getApplicationContext(), "Sucessfully created user for "+ full_name , Toast.LENGTH_SHORT).show();
-                    Log.d("signup", "ObjectId post " + tweety.getObjectId());
+                boolean validationError = false;
+
+                StringBuilder validationErrorMessage = new StringBuilder("Please, insert ");
+                if (isEmpty(email)) {
+                    validationError = true;
+                    validationErrorMessage.append("an username");
+                }
+                if (isEmpty(password)) {
+                    if (validationError) {
+                        validationErrorMessage.append(" and ");
+                    }
+                    validationError = true;
+                    validationErrorMessage.append("a password");
+                }
+                if (isEmpty(confirmpassword)) {
+                    if (validationError) {
+                        validationErrorMessage.append(" and ");
+                    }
+                    validationError = true;
+                    validationErrorMessage.append("your password again");
                 }
                 else {
-
-                    Log.d("signup", "exception is " + e);
-                    Toast.makeText(getApplicationContext(), "Error While creating user " + e, Toast.LENGTH_SHORT).show();
+                    if (!isMatching(password, confirmpassword)) {
+                        if (validationError) {
+                            validationErrorMessage.append(" and ");
+                        }
+                        validationError = true;
+                        validationErrorMessage.append("the same password twice.");
+                    }
                 }
+                validationErrorMessage.append(".");
+
+                if (validationError) {
+                    Toast.makeText(SignUpProfileActivity.this, validationErrorMessage.toString(), Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                //Setting up a progress dialog
+//                final ProgressDialog dlg = new ProgressDialog(SignUpProfileActivity.this);
+//                dlg.setTitle("Please, wait a moment.");
+//                dlg.setMessage("Signing up...");
+//                dlg.show();
+
+                ParseUser user = new ParseUser();
+                user.setEmail(email.getText().toString());
+                user.setPassword(password.getText().toString());
+                user.setUsername(username.getText().toString());
+                user.put("Contact",(mobile.getText().toString()));
+                user.put("Address",(address.getText().toString()));
+                user.signUpInBackground(new SignUpCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            //dlg.dismiss();
+                            alertDisplayer("Sucessful Signup","Successfully signed up " + email.getText().toString() + "!");
+
+                        } else {
+                            //dlg.dismiss();
+                            ParseUser.logOut();
+                            Toast.makeText(SignUpProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
             }
         });
-
-
-
-
     }
 
-
-
-    public void parse_data_back4_app(String fullname_string, String email_signup_string, String phone_signup_string, String passwordsingup_string, String locationsignup_string){
-        ParseQuery<ParseObject> ask = ParseQuery.getQuery("Car_Bejdho_User");
-        ask.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                for (ParseObject bird: objects){
-                    String bird_name = bird.getString("Id");
-                    row_id = row_id +1;
-
-                    Toast.makeText(getApplicationContext(), "the parsing number of rows are  "+ row_id , Toast.LENGTH_LONG).show();
-
-                }
-
-            }
-
-        });
-
-        push_data(fullname_string, email_signup_string, phone_signup_string,  passwordsingup_string,  locationsignup_string);
+    private boolean isEmpty(EditText text) {
+        if (text.getText().toString().trim().length() > 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
+    private boolean isMatching(EditText text1, EditText text2){
+        if(text1.getText().toString().equals(text2.getText().toString())){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
-
-    public void onSignUpClick(View v) throws InterruptedException {
-
-        EditText full_name = findViewById(R.id.full_name);
-        final String fullname_string = full_name.getText().toString();
-        EditText email_signup = findViewById(R.id.email_signup);
-        String email_signup_string = email_signup.getText().toString();
-        EditText phone_signup = findViewById(R.id.phone_signup);
-        String phone_signup_string = phone_signup.getText().toString();
-        EditText locationsignup = findViewById(R.id.locationsignup);
-        String locationsignup_string = locationsignup.getText().toString();
-        EditText passwordsingup = findViewById(R.id.passwordsingup);
-        String passwordsingup_string = passwordsingup.getText().toString();
-
-
-
-        //Toast.makeText(getApplicationContext(), "the number of rows are  "+ row_id , Toast.LENGTH_LONG).show();
-
-
-
-        parse_data_back4_app(fullname_string, email_signup_string, phone_signup_string,  passwordsingup_string,  locationsignup_string);
-
-
-
-        Intent ini = new Intent(this, MainScreen.class);
-        startActivity(ini);
+    private void alertDisplayer(String title,String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpProfileActivity.this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        Intent intent = new Intent(SignUpProfileActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                });
+        AlertDialog ok = builder.create();
+        ok.show();
     }
 }
