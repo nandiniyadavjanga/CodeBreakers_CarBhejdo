@@ -84,7 +84,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
         mobile=findViewById(R.id.phone_signup);
         address=findViewById(R.id.locationsignup);
 
-    
+
 
         final Button signup_button = findViewById(R.id.singup_action);
         signup_button.setOnClickListener(new View.OnClickListener() {
@@ -93,54 +93,14 @@ public class SignUpProfileActivity extends AppCompatActivity {
 
                 boolean validationError = false;
 
-                StringBuilder validationErrorMessage = new StringBuilder("Please, insert ");
-                if (isEmpty(email)) {
-                    validationError = true;
-                    validationErrorMessage.append("an username");
-                }
-                if (isEmpty(password)) {
-                    if (validationError) {
-                        validationErrorMessage.append(" and ");
-                    }
-                    validationError = true;
-                    validationErrorMessage.append("a password");
-                }
-                if (isEmpty(confirmpassword)) {
-                    if (validationError) {
-                        validationErrorMessage.append(" and ");
-                    }
-                    validationError = true;
-                    validationErrorMessage.append("your password again");
-                }
-                else {
-                    if (!isMatching(password, confirmpassword)) {
-                        if (validationError) {
-                            validationErrorMessage.append(" and ");
-                        }
-                        validationError = true;
-                        validationErrorMessage.append("the same password twice.");
-                    }
-                }
-                validationErrorMessage.append(".");
 
-                if (validationError) {
-                    Toast.makeText(SignUpProfileActivity.this, validationErrorMessage.toString(), Toast.LENGTH_LONG).show();
-                    return;
-                }
-
-                //Setting up a progress dialog
-//                final ProgressDialog dlg = new ProgressDialog(SignUpProfileActivity.this);
-//                dlg.setTitle("Please, wait a moment.");
-//                dlg.setMessage("Signing up...");
-//                dlg.show();
-
-                ParseUser user = new ParseUser();
-                user.setEmail(email.getText().toString());
-                user.setPassword(password.getText().toString());
-                user.setUsername(username.getText().toString());
-                user.put("Contact",(mobile.getText().toString()));
-                user.put("Address",(address.getText().toString()));
-                user.signUpInBackground(new SignUpCallback() {
+                ParseUser sing_up_user = new ParseUser();
+                sing_up_user.setEmail(email.getText().toString());
+                sing_up_user.setPassword(password.getText().toString());
+                sing_up_user.setUsername(username.getText().toString());
+                sing_up_user.put("Mobile",(mobile.getText().toString()));
+                sing_up_user.put("Address",(address.getText().toString()));
+                sing_up_user.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {
                         if (e == null) {
@@ -150,6 +110,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
                         } else {
                             //dlg.dismiss();
                             ParseUser.logOut();
+                            Toast.makeText(SignUpProfileActivity.this, "error message", Toast.LENGTH_LONG).show();
                             Toast.makeText(SignUpProfileActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
