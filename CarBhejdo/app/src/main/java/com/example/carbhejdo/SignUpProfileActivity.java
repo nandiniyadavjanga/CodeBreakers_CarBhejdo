@@ -119,6 +119,37 @@ public class SignUpProfileActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case PERMISSION_REQUEST:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "Permission granted",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(this, "Permission not granted",Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode){
+            case RESULT_LOAD_IMAGE:
+                if(resultCode == RESULT_OK){
+                    Uri selectedImage = data.getData();
+                    String[] filePathColumn1 = {MediaStore.Images.Media.DATA};
+                    Cursor cursor = getContentResolver().query(selectedImage,filePathColumn1, null, null, null);
+                    cursor.moveToFirst();
+                    int columnIndex= cursor.getColumnIndex(filePathColumn1[0]);
+                    String picturepath1 = cursor.getString(columnIndex);
+                    profileimg.setImageBitmap(BitmapFactory.decodeFile(picturepath1));
+                }
+        }
+    }
 
     private boolean isEmpty(EditText text) {
         if (text.getText().toString().trim().length() > 0) {
