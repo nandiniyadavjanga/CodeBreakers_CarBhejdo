@@ -55,6 +55,17 @@ public class CarInfoActivity extends AppCompatActivity {
             }
         });
 
+
+
+        Button push_sell_car = findViewById(R.id.push_sell_car);
+        push_sell_car.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
