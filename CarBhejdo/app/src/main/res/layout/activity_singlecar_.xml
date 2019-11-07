@@ -37,6 +37,7 @@
         android:id="@+id/imageView7"
         android:layout_width="291dp"
         android:layout_height="132dp"
+        android:onClick="sellerprof"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.533"
@@ -113,9 +114,10 @@
                 android:text="TextView" />
 
             <TextView
+                android:id="@+id/email_tv"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="TextView" />
+                android:text="UserName" />
 
         </LinearLayout>
     </ScrollView>

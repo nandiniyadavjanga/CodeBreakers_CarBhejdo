@@ -23,4 +23,9 @@ public class Singlecar_Activity extends AppCompatActivity {
         Intent logoini = new Intent(this,MenuActivity.class);
         startActivity(logoini);
     }
+
+    public void sellerprof(View view) {
+        Intent sprof = new Intent(this,sellerprof.class);
+        startActivity(sprof);
+    }
 }
