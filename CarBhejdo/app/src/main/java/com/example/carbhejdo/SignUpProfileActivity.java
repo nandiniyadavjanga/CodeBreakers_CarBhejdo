@@ -54,7 +54,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
     int row_id = 0;
     ImageView profileimg;
 
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
