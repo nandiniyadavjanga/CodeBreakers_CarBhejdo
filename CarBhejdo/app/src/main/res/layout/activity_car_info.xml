@@ -28,7 +28,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
-        android:id="@+id/et10"
+        android:id="@+id/price"
         android:layout_width="169dp"
         android:layout_height="34dp"
         android:background="#130F0F"
@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.839" />
 
     <EditText
-        android:id="@+id/et9"
+        android:id="@+id/miles_driven"
         android:layout_width="169dp"
         android:layout_height="34dp"
         android:background="#130F0F"
@@ -58,7 +58,7 @@
         app:layout_constraintVertical_bias="0.757" />
 
     <EditText
-        android:id="@+id/et8"
+        android:id="@+id/location"
         android:layout_width="169dp"
         android:layout_height="34dp"
         android:background="#130F0F"
@@ -73,7 +73,7 @@
         app:layout_constraintVertical_bias="0.68" />
 
     <EditText
-        android:id="@+id/et7"
+        android:id="@+id/year"
         android:layout_width="169dp"
         android:layout_height="34dp"
         android:background="#130F0F"
@@ -88,7 +88,7 @@
         app:layout_constraintVertical_bias="0.595" />
 
     <EditText
-        android:id="@+id/et11"
+        android:id="@+id/car_name"
         android:layout_width="169dp"
         android:layout_height="34dp"
         android:background="#130F0F"
@@ -103,7 +103,7 @@
         app:layout_constraintVertical_bias="0.427" />
 
     <EditText
-        android:id="@+id/et6"
+        android:id="@+id/model_no"
         android:layout_width="169dp"
         android:layout_height="34dp"
         android:background="#130F0F"

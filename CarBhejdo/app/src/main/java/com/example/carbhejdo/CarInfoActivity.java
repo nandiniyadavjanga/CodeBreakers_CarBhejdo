@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -13,10 +15,16 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 public class CarInfoActivity extends AppCompatActivity {
     ImageView addimage;
@@ -26,6 +34,12 @@ public class CarInfoActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_AGAIN=0;
     private static final int RESULT_LOAD_IMAGE_CAR=1;
 
+    private EditText car_name;
+    private EditText model_no;
+    private EditText year;
+    private EditText location;
+    private EditText miles_driven;
+    private EditText price;
 
 
     @Override
@@ -61,7 +75,42 @@ public class CarInfoActivity extends AppCompatActivity {
         push_sell_car.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
+                String object_id = SignUpProfileActivity.object_id;
+                if (object_id == null) {
+
+                    object_id = SIgninSignupActivity.object_id;
+
+                }
+
+                car_name = findViewById(R.id.car_name);
+                model_no = findViewById(R.id.model_no);
+                year = findViewById(R.id.year);
+                location = findViewById(R.id.location);
+                miles_driven = findViewById(R.id.miles_driven);
+                price = findViewById(R.id.price);
+
+                final ParseObject push_car_info = new ParseObject("sellingCarInfo");
+                push_car_info.put("user_object_id", object_id);
+                push_car_info.put("car_name", car_name.getText().toString());
+                push_car_info.put("model_no",model_no.getText().toString());
+                push_car_info.put("year",year.getText().toString());
+                push_car_info.put("location",location.getText().toString());
+                push_car_info.put("miles_driven",miles_driven.getText().toString());
+                push_car_info.put("price",price.getText().toString());
+                push_car_info.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e==null){
+                            Toast.makeText(CarInfoActivity.this, "car details added for selling", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(CarInfoActivity.this, "unable to add car details " + e, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
             }
         });
 

@@ -46,6 +46,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
     private EditText username;
     private EditText mobile;
     private EditText address;
+    public static String object_id = null;
 
 
 
@@ -95,7 +96,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
                 boolean validationError = false;
 
 
-                ParseUser sing_up_user = new ParseUser();
+                final ParseUser sing_up_user = new ParseUser();
                 sing_up_user.setEmail(email.getText().toString());
                 sing_up_user.setPassword(password.getText().toString());
                 sing_up_user.setUsername(username.getText().toString());
@@ -106,6 +107,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
                     public void done(ParseException e) {
                         if (e == null) {
                             //dlg.dismiss();
+                            object_id = sing_up_user.getObjectId();
                             alertDisplayer("Sucessful Signup","Successfully signed up " + email.getText().toString() + "!");
 
                         } else {

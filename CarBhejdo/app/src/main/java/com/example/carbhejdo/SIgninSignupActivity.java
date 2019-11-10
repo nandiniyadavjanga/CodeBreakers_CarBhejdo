@@ -6,8 +6,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -29,6 +31,7 @@ public class SIgninSignupActivity extends AppCompatActivity {
     private EditText emailID;
     private EditText password;
     public static String email;
+    public static String object_id = null;
 
 
 
@@ -71,7 +74,7 @@ public class SIgninSignupActivity extends AppCompatActivity {
                     return;
                 }
 
-                //Setting up a progress dialog
+
                 final ProgressDialog dlg = new ProgressDialog(SIgninSignupActivity.this);
                 dlg.setTitle("Please, wait a moment.");
                 dlg.setMessage("Logging in...");
@@ -84,6 +87,8 @@ public class SIgninSignupActivity extends AppCompatActivity {
                         if (parseUser != null) {
                             dlg.dismiss();
                             alertDisplayer("Sucessful Login","Welcome back " + emailID.getText().toString() + "!");
+
+                            object_id = parseUser.getObjectId();
 
                         } else {
                             dlg.dismiss();
