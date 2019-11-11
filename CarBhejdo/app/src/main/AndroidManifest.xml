@@ -13,12 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sellerprof"></activity>
+        <activity android:name=".NavigationActivity"></activity>
+        <activity android:name=".sellerprof" />
         <activity android:name=".Adapter" />
         <activity android:name=".SIgninSignupActivity" />
         <activity android:name=".BuyCarListActivity" />
         <activity android:name=".SignUpProfileActivity" />
-        <activity android:name=".MenuActivity" />
         <activity android:name=".CarInfoActivity" />
         <activity android:name=".FilterActivity" />
         <activity android:name=".Singlecar_Activity" />

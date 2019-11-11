@@ -18,11 +18,11 @@ public class Singlecar_Activity extends AppCompatActivity {
         Intent filterini = new Intent(this,FilterActivity.class);
         startActivity(filterini);
     }
-
-    public void onLogoClick(View v){
-        Intent logoini = new Intent(this,MenuActivity.class);
-        startActivity(logoini);
-    }
+//
+//    public void onLogoClick(View v){
+//        Intent logoini = new Intent(this,MenuActivity.class);
+//        startActivity(logoini);
+//    }
 
     public void sellerprof(View view) {
         Intent sprof = new Intent(this,sellerprof.class);
