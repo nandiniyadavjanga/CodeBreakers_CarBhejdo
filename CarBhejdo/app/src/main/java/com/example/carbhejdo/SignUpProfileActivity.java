@@ -14,11 +14,16 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -47,6 +52,10 @@ public class SignUpProfileActivity extends AppCompatActivity {
     private EditText mobile;
     private EditText address;
     public static String object_id = null;
+
+
+    private LocationManager locationManager;
+    private Location location;
 
 
 
@@ -86,6 +95,8 @@ public class SignUpProfileActivity extends AppCompatActivity {
         mobile=findViewById(R.id.phone_signup);
         address=findViewById(R.id.locationsignup);
 
+        getGPSLocation();
+
 
 
         final Button sign_action_button = findViewById(R.id.singup_action);
@@ -95,7 +106,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
 
                 boolean validationError = false;
 
-
+                address=findViewById(R.id.locationsignup);
                 final ParseUser sing_up_user = new ParseUser();
                 sing_up_user.setEmail(email.getText().toString());
                 sing_up_user.setPassword(password.getText().toString());
@@ -122,6 +133,68 @@ public class SignUpProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void getGPSLocation() {
+
+        FetchAddressService addressService = new FetchAddressService(this.getLocalClassName(), this);
+        Location gpsLocation = addressService.getLocation(LocationManager.GPS_PROVIDER);
+        double latitude = 0.0;
+        double longitude = 0.0;
+        if(gpsLocation != null){
+            latitude = gpsLocation.getLatitude();
+            longitude = gpsLocation.getLongitude();
+            ConvertToAddress.getAddress(latitude,longitude,this,new GeocoderHandler());
+            Log.d("LOCATION","Lat is "+ latitude+" and long is "+longitude);
+        }else{
+            showSettingsAlert();
+        }
+    }
+
+
+    private class GeocoderHandler extends Handler {
+        @Override
+        public void handleMessage(Message message) {
+            String locationAddress;
+            switch (message.what) {
+                case 1:
+                    Bundle bundle = message.getData();
+                    locationAddress = bundle.getString("address");
+                    break;
+                default:
+                    locationAddress = null;
+            }
+
+
+            Log.d("Location",locationAddress);
+            address.setText(locationAddress);
+        }
+    }
+
+
+    public void showSettingsAlert() {
+        androidx.appcompat.app.AlertDialog.Builder alertDialog = new androidx.appcompat.app.AlertDialog.Builder(
+                SignUpProfileActivity.this);
+        alertDialog.setTitle("SETTINGS");
+        alertDialog.setMessage("Enable Location Provider! Go to settings menu?");
+        alertDialog.setPositiveButton("Settings",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(
+                                Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        SignUpProfileActivity.this.startActivity(intent);
+                    }
+                });
+        alertDialog.setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.show();
+    }
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
