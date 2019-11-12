@@ -1,22 +1,40 @@
 package com.example.carbhejdo;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BuyCarListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToogle;
+    Button logo ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_car_list);
+
+        mDrawerLayout = findViewById(R.id.draw);
+
+        mToogle = new ActionBarDrawerToggle(this,mDrawerLayout, R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToogle);
+        mToogle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -43,18 +61,38 @@ public class BuyCarListActivity extends AppCompatActivity {
     }
 
 
+
     public void onCarClick(View v){
         Intent carini = new Intent(this,Singlecar_Activity.class);
         startActivity(carini);
     }
 
-    public void onFilterClick(View v){
-        Intent filterini = new Intent(this,FilterActivity.class);
-        startActivity(filterini);
+
+    public void onBuycarClick(View v){
+        Intent ini = new Intent(this,BuyCarListActivity.class);
+        startActivity(ini);
+    }
+    public void onSellcarClick(View v){
+        Intent ini = new Intent(this,CarInfoActivity.class);
+        startActivity(ini);
     }
 
-    public void onLogoClick(View v){
-        Intent logoini = new Intent(this,MenuActivity.class);
-        startActivity(logoini);
+    public void onProfileClick(View v){
+        Intent ini = new Intent(this,sellerprof.class);
+        startActivity(ini);
+    }
+
+    public void logoutClick(View v){
+        Intent ini = new Intent(this,SIgninSignupActivity.class);
+        startActivity(ini);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(mToogle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

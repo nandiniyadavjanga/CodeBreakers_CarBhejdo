@@ -14,8 +14,8 @@ public class sellerprof extends AppCompatActivity {
         setContentView(R.layout.activity_sellerprof);
     }
 
-    public void Onclickhome(View view) {
-        Intent intent=new Intent(this, MenuActivity.class);
-        startActivity(intent);
-    }
+//    public void Onclickhome(View view) {
+//        Intent intent=new Intent(this, MenuActivity.class);
+//        startActivity(intent);
+//    }
 }

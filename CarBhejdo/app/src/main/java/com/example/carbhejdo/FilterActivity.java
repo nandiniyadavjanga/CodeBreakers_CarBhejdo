@@ -14,10 +14,7 @@ public class FilterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_filter);
     }
 
-    public void onLogoClick(View v){
-        Intent ini = new Intent(this, MenuActivity.class);
-        startActivity(ini);
-    }
+
 
     public void onFilterClick(View v){
         Intent ini = new Intent(this, BuyCarListActivity.class);
