@@ -68,25 +68,6 @@ public class BuyCarListActivity extends AppCompatActivity {
     }
 
 
-    public void onBuycarClick(View v){
-        Intent ini = new Intent(this,BuyCarListActivity.class);
-        startActivity(ini);
-    }
-    public void onSellcarClick(View v){
-        Intent ini = new Intent(this,CarInfoActivity.class);
-        startActivity(ini);
-    }
-
-    public void onProfileClick(View v){
-        Intent ini = new Intent(this,sellerprof.class);
-        startActivity(ini);
-    }
-
-    public void logoutClick(View v){
-        Intent ini = new Intent(this,SIgninSignupActivity.class);
-        startActivity(ini);
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

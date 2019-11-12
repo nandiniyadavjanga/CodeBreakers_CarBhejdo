@@ -3,22 +3,19 @@
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_car"
-        android:onClick="onProfileClick"
-        android:title="Profile"/>
+        android:title="Profile" />
 
 
     <item
         android:id="@+id/buycar"
         android:icon="@drawable/ic_car"
-        android:onClick="onBuycarClick"
-        android:title="Buy Car"/>
+        android:title="Buy Car" />
 
 
     <item
         android:id="@+id/sellcar"
         android:icon="@drawable/ic_carsell"
-        android:onClick="onSellcarClick"
-        android:title="Sell Car"/>
+        android:title="Sell Car" />
 
 
     <item android:id="@+id/favourites" android:title="Favourites" android:icon="@drawable/ic_heart"/>
@@ -30,8 +27,7 @@
     <item
         android:id="@+id/logout"
         android:icon="@drawable/ic_logout"
-        android:onClick="logoutClick"
-        android:title="Log Out"/>
+        android:title="Log Out" />
 
 
 </menu>
