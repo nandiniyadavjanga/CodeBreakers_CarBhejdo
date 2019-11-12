@@ -29,6 +29,9 @@ public class BuyCarListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_car_list);
 
+
+
+
         mDrawerLayout = findViewById(R.id.draw);
 
         mToogle = new ActionBarDrawerToggle(this,mDrawerLayout, R.string.open,R.string.close);
