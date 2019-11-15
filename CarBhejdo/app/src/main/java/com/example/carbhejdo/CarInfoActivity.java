@@ -1,5 +1,7 @@
 package com.example.carbhejdo;
 
+
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +12,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
@@ -23,8 +26,17 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class CarInfoActivity extends AppCompatActivity {
     ImageView addimage;
@@ -63,9 +75,10 @@ public class CarInfoActivity extends AppCompatActivity {
         addimgbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_PICK,
+              /*  Intent i = new Intent(Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE_CAR);
+                startActivityForResult(i, RESULT_LOAD_IMAGE_CAR);*/
+              dispatchTakePictureIntent();
             }
         });
 
@@ -137,14 +150,28 @@ public class CarInfoActivity extends AppCompatActivity {
         switch (requestCode){
             case RESULT_LOAD_IMAGE_CAR:
                 if(resultCode == RESULT_OK){
-                    Uri selectedImage = data.getData();
+                   /* Uri selectedImage = data.getData();
                     String[] filePathColumn1 = {MediaStore.Images.Media.DATA};
                     Cursor cursor = getContentResolver().query(selectedImage,filePathColumn1, null, null, null);
                     cursor.moveToFirst();
                     int columnIndex= cursor.getColumnIndex(filePathColumn1[0]);
                     String picturepath1 = cursor.getString(columnIndex);
-                    addimage.setImageBitmap(BitmapFactory.decodeFile(picturepath1));
+                    Bitmap bitmap = BitmapFactory.decodeFile(picturepath1);*/
+                    Bundle extras = data.getExtras();
+                    if (extras != null && extras.get("data") != null) {
+                        Bitmap imageBitmap = (Bitmap) extras.get("data");
+                        addimage.setImageBitmap(imageBitmap);
+                        uploadPictureToParse(imageBitmap);
+                    }
+
                 }
+        }
+    }
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE_CAR);
         }
     }
     public void onPostClick(View v){
@@ -152,10 +179,10 @@ public class CarInfoActivity extends AppCompatActivity {
         startActivity(ini);
     }
 
-private void openGallery(){
+    private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery,PICK_IMAGE);
-}
+    }
 
 //    @Override
 //   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -166,4 +193,65 @@ private void openGallery(){
 //
 //       }
 //    }
+
+    private void uploadPictureToParse(Bitmap path){
+        ParseFile file = null;
+        try {
+            file = new ParseFile("picturePath", readInFile(getFileFromBitMap(path).getPath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Upload the image into Parse Cloud
+        file.saveInBackground();
+
+        // Create a New Class called "ImageUpload" in Parse
+        ParseObject imgupload = new ParseObject("Image");
+
+        // Create a column named "ImageName" and set the string
+        imgupload.put("Image", "picturePath");
+
+
+        // Create a column named "ImageFile" and insert the image
+        imgupload.put("ImageFile", file);
+
+        // Create the class and the columns
+        imgupload.saveInBackground();
+
+        // Show a simple toast message
+        Toast.makeText(this, "Image Saved, Upload another one ",Toast.LENGTH_SHORT).show();
+
+    }
+
+    private byte[] readInFile(String path) throws IOException {
+        // TODO Auto-generated method stub
+        byte[] data = null;
+        File file = new File(path);
+        InputStream input_stream = new BufferedInputStream(new FileInputStream(
+                file));
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        data = new byte[16384]; // 16K
+        int bytes_read;
+        while ((bytes_read = input_stream.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, bytes_read);
+        }
+        input_stream.close();
+        return buffer.toByteArray();
+    }
+    private File getFileFromBitMap(Bitmap bitmap){
+
+        File file = new File(getCacheDir(), "image_"+System.currentTimeMillis());
+        try {
+            file.createNewFile();
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+            byte[] bitmapdata = bos.toByteArray();
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(bitmapdata);
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
 }
