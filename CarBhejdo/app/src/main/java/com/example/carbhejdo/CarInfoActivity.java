@@ -52,6 +52,10 @@ public class CarInfoActivity extends AppCompatActivity {
     private EditText location;
     private EditText miles_driven;
     private EditText price;
+    private Button push_sell_car;
+    private static ParseObject imgupload;
+    private String image_object_id;
+
 
 
     @Override
@@ -66,6 +70,11 @@ public class CarInfoActivity extends AppCompatActivity {
 //                openGallery();
 //            }
 //        });
+
+
+        push_sell_car = findViewById(R.id.push_sell_car);
+        push_sell_car.setEnabled(false);
+
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED){
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},PERMISSION_REQUEST_AGAIN);
@@ -84,7 +93,7 @@ public class CarInfoActivity extends AppCompatActivity {
 
 
 
-        Button push_sell_car = findViewById(R.id.push_sell_car);
+
         push_sell_car.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +120,10 @@ public class CarInfoActivity extends AppCompatActivity {
                 push_car_info.put("location",location.getText().toString());
                 push_car_info.put("miles_driven",miles_driven.getText().toString());
                 push_car_info.put("price",price.getText().toString());
+                image_object_id = imgupload.getObjectId();
+                Log.d("object_id",  "object_id is" + image_object_id);
+                Toast.makeText(CarInfoActivity.this,"object is is " + image_object_id,Toast.LENGTH_SHORT).show();
+                push_car_info.put("car_image_object_id", image_object_id);
                 push_car_info.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -205,7 +218,7 @@ public class CarInfoActivity extends AppCompatActivity {
         file.saveInBackground();
 
         // Create a New Class called "ImageUpload" in Parse
-        ParseObject imgupload = new ParseObject("Image");
+        imgupload = new ParseObject("Image");
 
         // Create a column named "ImageName" and set the string
         imgupload.put("Image", "picturePath");
@@ -216,6 +229,9 @@ public class CarInfoActivity extends AppCompatActivity {
 
         // Create the class and the columns
         imgupload.saveInBackground();
+
+        push_sell_car.setEnabled(true);
+
 
         // Show a simple toast message
         Toast.makeText(this, "Image Saved, Upload another one ",Toast.LENGTH_SHORT).show();
