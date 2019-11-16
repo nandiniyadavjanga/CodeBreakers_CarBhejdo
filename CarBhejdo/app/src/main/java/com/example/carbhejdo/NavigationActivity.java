@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -41,7 +40,7 @@ public class NavigationActivity extends AppCompatActivity  {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
 //        if(mToogle.onOptionsItemSelected(item)){
-            if(item.getItemId()==R.id.profile){
+            if(item.getItemId()==R.id.profile_edit){
                 Intent intent=new Intent(this,sellerprof.class);
                 startActivity(intent);
 
