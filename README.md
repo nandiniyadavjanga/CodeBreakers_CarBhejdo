@@ -17,6 +17,11 @@ car buying and selling application
 ## Test credentials:
 
 * Credentials used for testing
-Emailid: test@nw.com
-Password: test
+1. Emailid : test@nw.com
+Password : test
 
+2. Emailid : ravi@gmail.com
+Password : me
+
+3. Emailid : abhi@gmail.com
+Password : lol
