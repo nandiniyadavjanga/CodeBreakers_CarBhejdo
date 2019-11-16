@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#9F9FEB">
     tools:context=".sellerprof">
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="73dp"
@@ -93,8 +94,9 @@
         app:layout_constraintVertical_bias="0.13"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-    <TextView
-        android:id="@+id/sell2_tv"
+
+    <EditText
+        android:id="@+id/profile_fullname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -107,8 +109,8 @@
         app:layout_constraintTop_toBottomOf="@+id/sell_img"
         app:layout_constraintVertical_bias="0.114" />
 
-    <TextView
-        android:id="@+id/sell1_tv"
+    <EditText
+        android:id="@+id/profile_email_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -121,8 +123,8 @@
         app:layout_constraintTop_toBottomOf="@+id/sell_img"
         app:layout_constraintVertical_bias="0.256" />
 
-    <TextView
-        android:id="@+id/sell3_tv"
+    <EditText
+        android:id="@+id/profile_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -135,8 +137,8 @@
         app:layout_constraintTop_toBottomOf="@+id/sell_img"
         app:layout_constraintVertical_bias="0.401" />
 
-    <TextView
-        android:id="@+id/sell4_tv"
+    <EditText
+        android:id="@+id/profile_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -149,7 +151,7 @@
         app:layout_constraintTop_toBottomOf="@+id/sell_img"
         app:layout_constraintVertical_bias="0.546" />
 
-    <TextView
+    <EditText
         android:id="@+id/sell_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -162,5 +164,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04" />
+
+    <ImageButton
+        android:id="@+id/edit_button"
+        android:layout_width="69dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.926"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272"
+        app:srcCompat="@drawable/edit_symbol" />
+
+    <Button
+        android:id="@+id/profile_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.878" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
