@@ -21,7 +21,7 @@ public class MainScreen extends AppCompatActivity {
 //    }
 
     public void onBuyCarClick(View v){
-        Intent ini = new Intent(this, BuyCarListActivity.class);
+        Intent ini = new Intent(this, NavigationMenuActivity.class);
         startActivity(ini);
     }
 
