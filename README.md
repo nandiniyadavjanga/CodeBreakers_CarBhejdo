@@ -16,12 +16,23 @@ car buying and selling application
 
 ## Test credentials:
 
-* Credentials used for testing
+  Credentials used for testing
 1. Emailid : test@nw.com
-Password : test
+   
+   Password : test
 
 2. Emailid : ravi@gmail.com
-Password : me
+   
+   Password : me
+   
+3. Emailid : abhi@gmail.com   
+   
+   Password : lol
 
-3. Emailid : abhi@gmail.com
-Password : lol
+## Supported devices:
+
+* Works in android devices version 5.0 and above.
+
+## Database:
+
+* Back4app
