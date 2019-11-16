@@ -14,3 +14,9 @@ car buying and selling application
 * Rajender Ravi Varma Devulapally
 * Subrahmanya Sai Bharadwaj Gandrakota
 
+## Test credentials:
+
+* Credentials used for testing
+Emailid: test@nw.com
+Password: test
+
