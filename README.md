@@ -48,7 +48,9 @@ The sequence is as follows:
 
 ## Supported devices:
 
+* Works only in android devices.
 * Works in android devices version 5.0 and above.
+* Minimum sdk version is 21 and target sdk version is 29.
 
 ## Database:
 
