@@ -7,7 +7,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+
+import android.widget.Button;
+
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -68,21 +84,6 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_info);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view2);
-        navigationView.setNavigationItemSelectedListener(this);
-//         addimage = findViewById(R.id.addimage);
-//        addimgbutton = findViewById(R.id.addimgbutton);
-//        addimgbutton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openGallery();
-//            }
-//        });
 
 
         push_sell_car = findViewById(R.id.push_sell_car);
@@ -97,10 +98,8 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
         addimgbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              /*  Intent i = new Intent(Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE_CAR);*/
-              dispatchTakePictureIntent();
+
+                dispatchTakePictureIntent();
             }
         });
 
@@ -153,6 +152,13 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
             }
         });
 
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view2);
+        navigationView.setNavigationItemSelectedListener(this);
 
     }
     @Override
@@ -170,6 +176,8 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
 
         }
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -193,7 +201,6 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
                 }
         }
     }
-
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -283,8 +290,6 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
         }
         return file;
     }
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -297,7 +302,7 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
-        if(id==R.id.profile){
+        if(id==R.id.profile_edit){
             Intent ini = new Intent(this,sellerprof.class);
             startActivity(ini);
             //Toast.makeText(this,"This is profile",Toast.LENGTH_SHORT).show();
@@ -305,3 +310,5 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
         return false;
     }
 }
+
+

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.navigation.NavigationView;
@@ -63,6 +64,12 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         Adapter adapter = new Adapter(modelClassList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+    }
+
+    public void onCarClick(View v){
+        Intent ini = new Intent(this,CarInfoActivity.class);
+        startActivity(ini);
 
     }
 
