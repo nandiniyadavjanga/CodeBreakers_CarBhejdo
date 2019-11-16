@@ -7,6 +7,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,8 +35,8 @@ import java.util.List;
 public class BuyCarListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private RecyclerView recyclerView;
     private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToogle;
-    NavigationView navigationview;
+    private ActionBarDrawerToggle mToggle;
+
     Button logo ;
 
     @Override
@@ -35,12 +44,16 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_buy_car_list);
-        mDrawerLayout = findViewById(R.id.draw);
-
-        mToogle = new ActionBarDrawerToggle(this,mDrawerLayout, R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToogle);
-        mToogle.syncState();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view1);
+        navigationView.setNavigationItemSelectedListener(this);
+
+
+
 
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -64,82 +77,28 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         Adapter adapter = new Adapter(modelClassList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        setNavigationViewListener();
-    }
 
-private void setNavigationViewListener(){
-
-
-NavigationView nav = (NavigationView)findViewById(R.id.nav_view);
-nav.setNavigationItemSelectedListener(this);
-
-}
-
-    public void onCarClick(View v){
-        Intent carini = new Intent(this,Singlecar_Activity.class);
-        startActivity(carini);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-
-        if(mToogle.onOptionsItemSelected(item)){
-
-
+        if(mToggle.onOptionsItemSelected(item)){
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.profile) {
-            // Handle the camera action
-            Intent toOtherint=new Intent(this,BuyCarListActivity.class);
-            startActivity(toOtherint);
-           Toast.makeText(this,"This is home",Toast.LENGTH_SHORT).show();
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        if(id==R.id.profile){
+            Intent ini = new Intent(this,sellerprof.class);
+            startActivity(ini);
+            //Toast.makeText(this,"This is profile",Toast.LENGTH_SHORT).show();
         }
-        if (id == R.id.buycar) {
-            Toast.makeText(this,"This is buy car",Toast.LENGTH_SHORT).show();
-            // Handle the camera action
-            //startActivity(new Intent(getApplicationContext(), BuyCarListActivity.class));
-        }
-        if (id == R.id.sellcar) {
-            // Handle the camera action
-            Toast.makeText(this,"This is sell",Toast.LENGTH_SHORT).show();
-        }
-//            mDrawerLayout.closeDrawer(GravityCompat.START);
-//            return true;
         return false;
     }
 }
-//        switch (id){
-//            case R.id.profile:
-//                Intent p = new Intent(BuyCarListActivity.this,sellerprof.class);
-//                startActivity(p);
-//                break;
-//            case R.id.buycar:
-//                Intent b = new Intent(BuyCarListActivity.this,BuyCarListActivity.class);
-//                startActivity(b);
-//                break;
-//            case R.id.sellcar:
-//                Intent s = new Intent(BuyCarListActivity.this,Singlecar_Activity.class);
-//                startActivity(s);
-//                break;
-//            case R.id.logout:
-//                Intent l = new Intent(BuyCarListActivity.this,SIgninSignupActivity.class);
-//                startActivity(l);
-//                break;
-//        }
-//        DrawerLayout draw = findViewById(R.id.draw);
-//        draw.closeDrawer(GravityCompat.START);
-//        return true;
-//    }
-//}
 
 
