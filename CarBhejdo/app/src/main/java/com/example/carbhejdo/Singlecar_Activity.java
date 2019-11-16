@@ -52,7 +52,7 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
-        if(id==R.id.profile){
+        if(id==R.id.profile_edit){
             Intent ini = new Intent(this,sellerprof.class);
             startActivity(ini);
             //Toast.makeText(this,"This is profile",Toast.LENGTH_SHORT).show();

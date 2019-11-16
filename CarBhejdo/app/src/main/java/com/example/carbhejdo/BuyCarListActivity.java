@@ -68,7 +68,7 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
     }
 
     public void onCarClick(View v){
-        Intent ini = new Intent(this,CarInfoActivity.class);
+        Intent ini = new Intent(this,Singlecar_Activity.class);
         startActivity(ini);
 
     }
