@@ -4,7 +4,9 @@ package com.example.carbhejdo;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.content.Context;
@@ -19,12 +21,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -38,8 +42,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class CarInfoActivity extends AppCompatActivity {
+public class CarInfoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ImageView addimage;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
 
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
@@ -62,6 +68,13 @@ public class CarInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_info);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view2);
+        navigationView.setNavigationItemSelectedListener(this);
 //         addimage = findViewById(R.id.addimage);
 //        addimgbutton = findViewById(R.id.addimgbutton);
 //        addimgbutton.setOnClickListener(new View.OnClickListener() {
@@ -269,5 +282,26 @@ public class CarInfoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return file;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if(mToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        if(id==R.id.profile){
+            Intent ini = new Intent(this,sellerprof.class);
+            startActivity(ini);
+            //Toast.makeText(this,"This is profile",Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 }
