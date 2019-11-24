@@ -3,6 +3,7 @@ package com.example.carbhejdo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,8 @@ import android.view.MenuItem;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -23,6 +26,7 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
     private RecyclerView recyclerView;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    ToggleButton toggleButton;
 
     Button logo ;
 
@@ -38,7 +42,6 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view1);
         navigationView.setNavigationItemSelectedListener(this);
-
 
 
 
@@ -88,8 +91,24 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         if(id==R.id.profile_edit){
             Intent ini = new Intent(this,sellerprof.class);
             startActivity(ini);
-            //Toast.makeText(this,"This is profile",Toast.LENGTH_SHORT).show();
+
         }
+        if(id==R.id.buycar){
+            Intent ini = new Intent(this,BuyCarListActivity.class);
+            startActivity(ini);
+
+        }
+        if(id==R.id.sellcar){
+            Intent ini = new Intent(this,Singlecar_Activity.class);
+            startActivity(ini);
+
+        }
+        if(id==R.id.favourites){
+            Intent ini = new Intent(this,FavouritesActivity.class);
+            startActivity(ini);
+
+        }
+
         return false;
     }
 }
