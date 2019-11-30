@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
@@ -17,6 +19,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
 
     public Adapter(List<ModelClass> modelClassList) {
         this.modelClassList = modelClassList;
+    }
+
+    public void addData(List<ModelClass> modelClasses){
+
+        if(modelClassList != null && modelClassList.size() > 0){
+            modelClassList.addAll(modelClasses);
+            notifyDataSetChanged();
+        }else{
+            modelClassList = modelClasses;
+            notifyDataSetChanged();
+        }
     }
 
     @NonNull
@@ -29,11 +42,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
     @Override
     public void onBindViewHolder(@NonNull Viewholder viewholder, int position) {
 
-        int resource = modelClassList.get(position).getImageResource();
+        // int resource = modelClassList.get(position).getImageResource();
+        String imageUrl = modelClassList.get(position).getImageUrl();
         String title = modelClassList.get(position).getTitle();
         String body = modelClassList.get(position).getBody();
         String body1 = modelClassList.get(position).getBody1();
-        viewholder.setData(resource, title, body, body1);
+        viewholder.setData(imageUrl, title, body, body1);
 
     }
 
@@ -58,8 +72,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Viewholder> {
             body1 = itemView.findViewById(R.id.body1);
         }
 
-        private void setData(int resource, String titleText, String bodyText, String bodyText1){
-            imageView.setImageResource(resource);
+        private void setData(String imageUrl, String titleText, String bodyText, String bodyText1){
+//            imageView.setImageResource(resource);
+            if (imageUrl != null && !imageUrl.isEmpty()) {
+                Glide.with(itemView.getContext()).load(imageUrl).into(imageView);
+            }
             title.setText(titleText);
             body.setText(bodyText);
             body1.setText(bodyText1);
