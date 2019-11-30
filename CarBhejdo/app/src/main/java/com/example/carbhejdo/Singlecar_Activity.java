@@ -9,24 +9,63 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 
-public class Singlecar_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Singlecar_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    private ModelClass mModelClass;
+    private ImageView carImage;
+    private TextView carName, carPrice,distance_travelled,condition,userReview,companyReview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singlecar_);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        carImage = findViewById(R.id.imageView6);
+        carName = findViewById(R.id.car_name);
+        carPrice = findViewById(R.id.car_price);
+        distance_travelled = findViewById(R.id.distance_travelled);
+        condition = findViewById(R.id.condition);
+        userReview = findViewById(R.id.userReview);
+        companyReview = findViewById(R.id.companyReview);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view1);
         navigationView.setNavigationItemSelectedListener(this);
-
+        if(getIntent() != null){
+            if(getIntent().hasExtra("ModelData")){
+                mModelClass = (ModelClass) getIntent().getSerializableExtra("ModelData");
+            }
+        }
+        if(mModelClass != null && (mModelClass.getImageUrl() != null || !mModelClass.getImageUrl().isEmpty())){
+            Glide.with(carImage.getContext()).load(mModelClass.getImageUrl()).into(carImage);
+        }
+        if (mModelClass != null && mModelClass.getBody() != null && mModelClass.getBody() != null) {
+            carName.setText(mModelClass.getTitle());
+            carPrice.setText(mModelClass.getBody());
+            distance_travelled.setText(mModelClass.getYear());
+            condition.setText(mModelClass.getYear());
+            userReview.setText(mModelClass.getBody());
+            companyReview.setText(mModelClass.getLocation());
+        }
     }
 
     public void onFilterClick(View v){
@@ -58,6 +97,17 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
             //Toast.makeText(this,"This is profile",Toast.LENGTH_SHORT).show();
         }
         return false;
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        // Add a marker in Sydney, Australia,
+        // and move the map's camera to the same location.
+        LatLng sydney = new LatLng(40.330020, -94.873210);
+        googleMap.addMarker(new MarkerOptions().position(sydney)
+                .title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
 

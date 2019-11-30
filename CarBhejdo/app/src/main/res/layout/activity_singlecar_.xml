@@ -22,36 +22,34 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.011"
             app:layout_constraintStart_toStartOf="parent"
-
             tools:srcCompat="@drawable/profile" />
 
 
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.574"
+            tools:context=".Singlecar_Activity" />
+
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.14"
-            app:srcCompat="@drawable/car1" />
-
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="431dp"
+            android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:onClick="sellerprof"
-
-
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/map" />
+            app:layout_constraintVertical_bias="0.03"
+            app:srcCompat="@drawable/car1" />
 
         <ScrollView
             android:layout_width="0dp"
@@ -69,59 +67,90 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/car_name"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
                     android:text="Nissan" />
 
                 <TextView
+                    android:id="@+id/car_price"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
                     android:text="$3000" />
 
                 <TextView
+                    android:id="@+id/distance_travelled"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="123000 miles" />
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"                    android:text="123000 miles" />
+
+                <TextView
+                    android:id="@+id/condition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"                    android:text="Good Car" />
+
+                <TextView
+                    android:id="@+id/userReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"                    android:text="Nice one" />
+
+                <TextView
+                    android:id="@+id/companyReview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"                    android:text="Awesome" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="Good Car" />
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"                    android:text="TextView" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="Nice one" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="Awesome" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="TextView" />
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"                    android:text="TextView" />
 
                 <TextView
                     android:id="@+id/email_tv"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="UserName" />
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"                    android:text="UserName" />
 
             </LinearLayout>
         </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 
     <com.google.android.material.navigation.NavigationView

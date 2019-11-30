@@ -1,23 +1,18 @@
 package com.example.carbhejdo;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-
-import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.parse.FindCallback;
@@ -43,8 +38,14 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
     String title;
     String car_price;
     String miles_driven;
+    String location;
+    String model_no;
+    String year;
+    String user_object_id;
     private List<ParseObject> mParseObjects;
     private int parsePosition;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,16 +83,13 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         Log.d("object_id", "getting data" + modelClassList);
         Log.d("object_id", "getting data" + temp_reculer_data);
 
-        for (String sample: temp_reculer_data){
+      /*  for (String sample: temp_reculer_data){
             String [] splited_data = sample.split(" ");
             //modelClassList.add(new ModelClass(R.drawable.altima, splited_data[0], "Price: " + splited_data[1],"Miles Driven: " + splited_data[2]));
             modelClassList.add(new ModelClass(KIA_PLACE_HOLDER,splited_data[0] , "Price: " + splited_data[1],"Miles Driven: " + splited_data[2]));
 
-        }
-
-
-
-        modelClassList.add(new ModelClass(KIA_PLACE_HOLDER, "Kia", "Price: $5000","Miles Driven: 11000"));
+        }*/
+        modelClassList.add(new ModelClass(KIA_PLACE_HOLDER, "Kia", "Price: $5000","Miles Driven: 11000", "Location : US", "model No : XXXX", "year : XXXX", "user object id: XXXXX"));
         adapter = new Adapter(modelClassList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -111,6 +109,25 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         if (miles_driven == null || miles_driven.isEmpty()){
             miles_driven = "UNDEFINED";
         }
+        location = carObject.getString("location");
+        if (location == null || location.isEmpty()){
+            location = "UNDEFINED";
+        }
+        model_no = carObject.getString("model_no");
+        if (model_no == null || model_no.isEmpty()){
+            model_no = "UNDEFINED";
+        }
+        year = carObject.getString("year");
+        if (year == null || year.isEmpty()){
+            year = "UNDEFINED";
+        }
+        user_object_id = carObject.getString("user_object_id");
+        if (user_object_id == null || user_object_id.isEmpty()){
+            user_object_id = "UNDEFINED";
+        }
+
+
+
 
         String image_table_id = carObject.getString("car_image_object_id");
         makeQueryAndAddImage(image_table_id);
@@ -137,7 +154,7 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
                         }
                     }
                 }
-                modelClassList.add(new ModelClass(carImageUrl,title,"Price: "+car_price,"Miles Driven: " + miles_driven));
+                modelClassList.add(new ModelClass(carImageUrl,title,"Price: "+car_price,"Miles Driven: " + miles_driven, "location: " + location, "model_no : " + model_no, "year: " + year, "user_object_id: " + user_object_id));
                 if(parsePosition >= mParseObjects.size()-1){
                     updateAdapterWithModelData(modelClassList);
                 }else{
@@ -155,15 +172,6 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         if(adapter != null){
             adapter.addData(modelClasses);
         }
-
-    }
-
-
-
-
-    public void onCarClick(View v){
-        Intent ini = new Intent(this,Singlecar_Activity.class);
-        startActivity(ini);
 
     }
 
@@ -203,4 +211,3 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         return false;
     }
 }
-
