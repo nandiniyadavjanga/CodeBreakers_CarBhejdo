@@ -198,7 +198,7 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
 
         }
         if(id==R.id.sellcar){
-            Intent ini = new Intent(this,Singlecar_Activity.class);
+            Intent ini = new Intent(this,CarInfoActivity.class);
             startActivity(ini);
 
         }
