@@ -20,6 +20,7 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -205,9 +206,12 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
         if(id==R.id.favourites){
             Intent ini = new Intent(this,FavouritesActivity.class);
             startActivity(ini);
-
         }
-
+        if(id==R.id.logout){
+            ParseUser.logOut();
+            Intent ini = new Intent(this,SIgninSignupActivity.class);
+            startActivity(ini);
+        }
         return false;
     }
 }
