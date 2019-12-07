@@ -89,7 +89,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_profile);
 
          profileimg = findViewById(R.id.profileimg);
-        Button  profilebtn = findViewById(R.id.profilebtn);
+
 
 
 
@@ -139,124 +139,124 @@ public class SignUpProfileActivity extends AppCompatActivity {
             }
         });
 
-        addimage = findViewById(R.id.profileimg);
-        Button  addimgbutton = findViewById(R.id.profilebtn);
-        addimgbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dispatchTakePictureIntent();
-            }
-        });
-
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case PERMISSION_REQUEST_AGAIN:
-                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(this, "Permission granted",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(this, "Permission not granted",Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-
-        }
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode){
-            case RESULT_LOAD_IMAGE_CAR:
-                if(resultCode == RESULT_OK){
-                   /* Uri selectedImage = data.getData();
-                    String[] filePathColumn1 = {MediaStore.Images.Media.DATA};
-                    Cursor cursor = getContentResolver().query(selectedImage,filePathColumn1, null, null, null);
-                    cursor.moveToFirst();
-                    int columnIndex= cursor.getColumnIndex(filePathColumn1[0]);
-                    String picturepath1 = cursor.getString(columnIndex);
-                    Bitmap bitmap = BitmapFactory.decodeFile(picturepath1);*/
-                    Bundle extras = data.getExtras();
-                    if (extras != null && extras.get("data") != null) {
-                        Bitmap imageBitmap = (Bitmap) extras.get("data");
-                        addimage.setImageBitmap(imageBitmap);
-                        uploadPictureToParse(imageBitmap);
-                    }
-
-                }
-        }
-    }
-    private void dispatchTakePictureIntent() {
-        //Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        Intent takePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE_CAR);
-        }
-    }
-    private void uploadPictureToParse(Bitmap path){
-        ParseFile file = null;
-        try {
-            file = new ParseFile("picturePath", readInFile(getFileFromBitMap(path).getPath()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // Upload the image into Parse Cloud
-        file.saveInBackground();
-
-        // Create a New Class called "ImageUpload" in Parse
-        imgupload = new ParseObject("Image");
-
-        // Create a column named "ImageName" and set the string
-        imgupload.put("Image", "picturePath");
-
-
-        // Create a column named "ImageFile" and insert the image
-        imgupload.put("ImageFile", file);
-
-        // Create the class and the columns
-        imgupload.saveInBackground();
-
-        //push_sell_car.setEnabled(true);
-
-
-        // Show a simple toast message
-        Toast.makeText(this, "Image Saved, Upload another one ",Toast.LENGTH_SHORT).show();
+//        addimage = findViewById(R.id.profileimg);
+//        Button  addimgbutton = findViewById(R.id.profilebtn);
+//        addimgbutton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                dispatchTakePictureIntent();
+//            }
+//        });
 
     }
-
-    private byte[] readInFile(String path) throws IOException {
-        // TODO Auto-generated method stub
-        byte[] data = null;
-        File file = new File(path);
-        InputStream input_stream = new BufferedInputStream(new FileInputStream(
-                file));
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        data = new byte[16384]; // 16K
-        int bytes_read;
-        while ((bytes_read = input_stream.read(data, 0, data.length)) != -1) {
-            buffer.write(data, 0, bytes_read);
-        }
-        input_stream.close();
-        return buffer.toByteArray();
-    }
-    private File getFileFromBitMap(Bitmap bitmap){
-
-        File file = new File(getCacheDir(), "image_"+System.currentTimeMillis());
-        try {
-            file.createNewFile();
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-            byte[] bitmapdata = bos.toByteArray();
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(bitmapdata);
-            fos.flush();
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        switch (requestCode){
+//            case PERMISSION_REQUEST_AGAIN:
+//                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+//                    Toast.makeText(this, "Permission granted",Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    Toast.makeText(this, "Permission not granted",Toast.LENGTH_SHORT).show();
+//                    finish();
+//                }
+//
+//        }
+//    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        switch (requestCode){
+//            case RESULT_LOAD_IMAGE_CAR:
+//                if(resultCode == RESULT_OK){
+//                   /* Uri selectedImage = data.getData();
+//                    String[] filePathColumn1 = {MediaStore.Images.Media.DATA};
+//                    Cursor cursor = getContentResolver().query(selectedImage,filePathColumn1, null, null, null);
+//                    cursor.moveToFirst();
+//                    int columnIndex= cursor.getColumnIndex(filePathColumn1[0]);
+//                    String picturepath1 = cursor.getString(columnIndex);
+//                    Bitmap bitmap = BitmapFactory.decodeFile(picturepath1);*/
+//                    Bundle extras = data.getExtras();
+//                    if (extras != null && extras.get("data") != null) {
+//                        Bitmap imageBitmap = (Bitmap) extras.get("data");
+//                        addimage.setImageBitmap(imageBitmap);
+//                        uploadPictureToParse(imageBitmap);
+//                    }
+//
+//                }
+//        }
+//    }
+//    private void dispatchTakePictureIntent() {
+//        //Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        Intent takePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivityForResult(takePictureIntent, RESULT_LOAD_IMAGE_CAR);
+//        }
+//    }
+//    private void uploadPictureToParse(Bitmap path){
+//        ParseFile file = null;
+//        try {
+//            file = new ParseFile("picturePath", readInFile(getFileFromBitMap(path).getPath()));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        // Upload the image into Parse Cloud
+//        file.saveInBackground();
+//
+//        // Create a New Class called "ImageUpload" in Parse
+//        imgupload = new ParseObject("Image");
+//
+//        // Create a column named "ImageName" and set the string
+//        imgupload.put("Image", "picturePath");
+//
+//
+//        // Create a column named "ImageFile" and insert the image
+//        imgupload.put("ImageFile", file);
+//
+//        // Create the class and the columns
+//        imgupload.saveInBackground();
+//
+//        //push_sell_car.setEnabled(true);
+//
+//
+//        // Show a simple toast message
+//        Toast.makeText(this, "Image Saved, Upload another one ",Toast.LENGTH_SHORT).show();
+//
+//    }
+//
+//    private byte[] readInFile(String path) throws IOException {
+//        // TODO Auto-generated method stub
+//        byte[] data = null;
+//        File file = new File(path);
+//        InputStream input_stream = new BufferedInputStream(new FileInputStream(
+//                file));
+//        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+//        data = new byte[16384]; // 16K
+//        int bytes_read;
+//        while ((bytes_read = input_stream.read(data, 0, data.length)) != -1) {
+//            buffer.write(data, 0, bytes_read);
+//        }
+//        input_stream.close();
+//        return buffer.toByteArray();
+//    }
+//    private File getFileFromBitMap(Bitmap bitmap){
+//
+//        File file = new File(getCacheDir(), "image_"+System.currentTimeMillis());
+//        try {
+//            file.createNewFile();
+//            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//            bitmap.compress(Bitmap.CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
+//            byte[] bitmapdata = bos.toByteArray();
+//            FileOutputStream fos = new FileOutputStream(file);
+//            fos.write(bitmapdata);
+//            fos.flush();
+//            fos.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return file;
+//    }
     private void getGPSLocation() {
 
         FetchAddressService addressService = new FetchAddressService(this.getLocalClassName(), this);
@@ -273,7 +273,11 @@ public class SignUpProfileActivity extends AppCompatActivity {
         }
     }
 
-
+public void signinclick(View v){
+        Intent in = new Intent(this,SIgninSignupActivity.class);
+    in.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(in);
+}
     private class GeocoderHandler extends Handler {
         @Override
         public void handleMessage(Message message) {
@@ -360,7 +364,7 @@ public class SignUpProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
-                        Intent intent = new Intent(SignUpProfileActivity.this, MainScreen.class);
+                        Intent intent = new Intent(SignUpProfileActivity.this, BuyCarListActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }

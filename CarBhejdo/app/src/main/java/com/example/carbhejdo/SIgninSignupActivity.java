@@ -142,7 +142,7 @@ public class SIgninSignupActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                         email= emailID.getText().toString();
-                        Intent intent = new Intent(SIgninSignupActivity.this, MainScreen.class);
+                        Intent intent = new Intent(SIgninSignupActivity.this, BuyCarListActivity.class);
                         intent.putExtra("email", emailID.getText().toString());
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);

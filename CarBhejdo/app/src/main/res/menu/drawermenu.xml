@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/profile_edit"
-        android:icon="@drawable/ic_car"
+        android:icon="@drawable/ic_user"
         android:clickable="true"
         android:title="Profile" />
 
