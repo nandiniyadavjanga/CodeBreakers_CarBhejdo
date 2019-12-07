@@ -207,6 +207,10 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
             Intent ini = new Intent(this,FavouritesActivity.class);
             startActivity(ini);
         }
+        if(id==R.id.faq){
+            Intent ini = new Intent(this,FaqActivity.class);
+            startActivity(ini);
+        }
         if(id==R.id.logout){
             ParseUser.logOut();
             Intent ini = new Intent(this,SIgninSignupActivity.class);

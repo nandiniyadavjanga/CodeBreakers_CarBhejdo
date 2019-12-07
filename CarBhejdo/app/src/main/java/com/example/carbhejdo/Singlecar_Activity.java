@@ -20,6 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
+import com.parse.ParseUser;
 
 public class Singlecar_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     private DrawerLayout mDrawerLayout;
@@ -94,7 +95,30 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
         if(id==R.id.profile_edit){
             Intent ini = new Intent(this,sellerprof.class);
             startActivity(ini);
-            //Toast.makeText(this,"This is profile",Toast.LENGTH_SHORT).show();
+
+        }
+        if(id==R.id.buycar){
+            Intent ini = new Intent(this,BuyCarListActivity.class);
+            startActivity(ini);
+
+        }
+        if(id==R.id.sellcar){
+            Intent ini = new Intent(this,CarInfoActivity.class);
+            startActivity(ini);
+
+        }
+        if(id==R.id.favourites){
+            Intent ini = new Intent(this,FavouritesActivity.class);
+            startActivity(ini);
+        }
+        if(id==R.id.faq){
+            Intent ini = new Intent(this,FaqActivity.class);
+            startActivity(ini);
+        }
+        if(id==R.id.logout){
+            ParseUser.logOut();
+            Intent ini = new Intent(this,SIgninSignupActivity.class);
+            startActivity(ini);
         }
         return false;
     }
