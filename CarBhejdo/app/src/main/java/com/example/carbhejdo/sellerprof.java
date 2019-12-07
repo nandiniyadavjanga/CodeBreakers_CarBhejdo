@@ -128,11 +128,31 @@ public class sellerprof extends AppCompatActivity implements NavigationView.OnNa
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
         int id = menuItem.getItemId();
         if(id==R.id.profile_edit){
             Intent ini = new Intent(this,sellerprof.class);
             startActivity(ini);
-            //Toast.makeText(this,"This is profile",Toast.LENGTH_SHORT).show();
+
+        }
+        if(id==R.id.buycar){
+            Intent ini = new Intent(this,BuyCarListActivity.class);
+            startActivity(ini);
+
+        }
+        if(id==R.id.sellcar){
+            Intent ini = new Intent(this,CarInfoActivity.class);
+            startActivity(ini);
+
+        }
+        if(id==R.id.favourites){
+            Intent ini = new Intent(this,FavouritesActivity.class);
+            startActivity(ini);
+        }
+        if(id==R.id.logout){
+            ParseUser.logOut();
+            Intent ini = new Intent(this,SIgninSignupActivity.class);
+            startActivity(ini);
         }
         return false;
     }
