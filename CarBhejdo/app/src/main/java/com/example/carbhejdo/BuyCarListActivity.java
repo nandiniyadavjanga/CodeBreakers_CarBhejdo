@@ -90,7 +90,7 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
             modelClassList.add(new ModelClass(KIA_PLACE_HOLDER,splited_data[0] , "Price: " + splited_data[1],"Miles Driven: " + splited_data[2]));
 
         }*/
-        modelClassList.add(new ModelClass(KIA_PLACE_HOLDER, "Kia", "Price: $5000","Miles Driven: 11000", "Location : US", "model No : XXXX", "year : XXXX", "user object id: XXXXX"));
+        modelClassList.add(new ModelClass(KIA_PLACE_HOLDER, "Kia", "Price: $5000","Miles: 11000", "Location : US", "model No : XXXX", "year : XXXX", "user object id: XXXXX"));
         adapter = new Adapter(modelClassList);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -155,7 +155,7 @@ public class BuyCarListActivity extends AppCompatActivity implements NavigationV
                         }
                     }
                 }
-                modelClassList.add(new ModelClass(carImageUrl,title,"Price: "+car_price,"Miles Driven: " + miles_driven, "location: " + location, "model_no : " + model_no, "year: " + year, "user_object_id: " + user_object_id));
+                modelClassList.add(new ModelClass(carImageUrl,title,"Price: "+car_price,"Miles: " + miles_driven, "location: " + location, "model_no : " + model_no, "year: " + year, "user_object_id: " + user_object_id));
                 if(parsePosition >= mParseObjects.size()-1){
                     updateAdapterWithModelData(modelClassList);
                 }else{
