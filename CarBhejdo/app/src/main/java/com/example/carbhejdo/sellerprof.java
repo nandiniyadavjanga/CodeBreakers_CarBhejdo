@@ -149,6 +149,10 @@ public class sellerprof extends AppCompatActivity implements NavigationView.OnNa
             Intent ini = new Intent(this,FavouritesActivity.class);
             startActivity(ini);
         }
+        if(id==R.id.faq){
+            Intent ini = new Intent(this,FaqActivity.class);
+            startActivity(ini);
+        }
         if(id==R.id.logout){
             ParseUser.logOut();
             Intent ini = new Intent(this,SIgninSignupActivity.class);
