@@ -101,7 +101,7 @@ public class sellerprof extends AppCompatActivity implements NavigationView.OnNa
                 String updated_username = full_name.getText().toString();
                 ParseUser user = ParseUser.getCurrentUser();
                 user.setUsername(updated_username);
-                user.setEmail(seller_email);
+                user.setEmail(updated_email);
                 user.put("Mobile", seller_phone);
                 user.saveInBackground(new SaveCallback() {
                     @Override

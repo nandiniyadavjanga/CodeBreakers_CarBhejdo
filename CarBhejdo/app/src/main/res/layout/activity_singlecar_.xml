@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="Nissan"
-                    android:textColor="@color/white"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -81,19 +81,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+                    android:text="$3000"
+                    android:textColor="#000000"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:text="$3000" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/distance_travelled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+                    android:text="123000 miles"
+                    android:textColor="#000000"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"                    android:text="123000 miles" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/owner_name"
@@ -101,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="Owner Name : "
-                    android:textColor="@color/white"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -111,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:padding="16dp"
                     android:text="Owner Contact : "
-                    android:textColor="@color/white"
+                    android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
