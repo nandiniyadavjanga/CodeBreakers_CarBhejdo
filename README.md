@@ -49,7 +49,7 @@ The sequence is as follows:
 
 * Works only in android devices.
 * Works in android devices version 5.0 and above.
-* Minimum sdk version is 21 and target sdk version is 29.
+* Minimum sdk version is 23 and target sdk version is 29.
 
 ## Database:
 
