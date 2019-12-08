@@ -62,13 +62,13 @@ public class FavouritesActivity extends AppCompatActivity implements NavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
-//        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-//        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
-//        mDrawerLayout.addDrawerListener(mToggle);
-//        mToggle.syncState();
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view1);
-//        navigationView.setNavigationItemSelectedListener(this);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view1);
+        navigationView.setNavigationItemSelectedListener(this);
         favourite_model = Model.getModel();
         fav_server = new FavouritesAdapter(favourite_model,this);
         fav_recycler = findViewById(R.id.Recycler);
