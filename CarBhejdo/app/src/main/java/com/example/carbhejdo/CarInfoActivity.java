@@ -136,11 +136,14 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
                 image_object_id = imgupload.getObjectId();
                 Log.d("object_id",  "object_id is" + image_object_id);
                 Toast.makeText(CarInfoActivity.this,"object is is " + image_object_id,Toast.LENGTH_SHORT).show();
+
                 push_car_info.put("car_image_object_id", image_object_id);
                 push_car_info.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
                         if (e==null){
+                            Intent ini = new Intent(getApplicationContext(), BuyCarListActivity.class);
+                            startActivity(ini);
                             Toast.makeText(CarInfoActivity.this, "car details added for selling", Toast.LENGTH_SHORT).show();
                         }
                         else{
@@ -149,6 +152,7 @@ public class CarInfoActivity extends AppCompatActivity implements NavigationView
 
                     }
                 });
+
 
             }
         });
