@@ -97,7 +97,10 @@ public class sellerprof extends AppCompatActivity implements NavigationView.OnNa
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String updated_email = email.getText().toString();
+                String updated_username = full_name.getText().toString();
                 ParseUser user = ParseUser.getCurrentUser();
+                user.setUsername(updated_username);
                 user.setEmail(seller_email);
                 user.put("Mobile", seller_phone);
                 user.saveInBackground(new SaveCallback() {
