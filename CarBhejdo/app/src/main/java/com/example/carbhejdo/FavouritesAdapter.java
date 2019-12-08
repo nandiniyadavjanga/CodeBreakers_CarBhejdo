@@ -42,7 +42,7 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Fa
     public void onBindViewHolder(@NonNull FavouritesAdapter.FavouritesViewHolder holder, int position) {
         LinearLayout layout_holder = holder.view_linear;
         TextView disp_Lyric = layout_holder.findViewById(R.id.favourite);
-        disp_Lyric.setText(favourite_model.getFavourites().get(position).favourite);
+        disp_Lyric.setText(favourite_model.getFavourites().get(position));
     }
 
     @Override

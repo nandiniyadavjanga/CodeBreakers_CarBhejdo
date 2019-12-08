@@ -35,7 +35,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.563"
+            app:layout_constraintVertical_bias="0.672"
             tools:context=".Singlecar_Activity" />
 
         <ImageView
@@ -81,19 +81,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:text="$3000"
                     android:textColor="@color/white"
-                    android:text="$3000" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/distance_travelled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+                    android:text="123000 miles"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"                    android:text="123000 miles" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/owner_name"
@@ -117,6 +118,18 @@
 
             </LinearLayout>
         </ScrollView>
+
+        <Button
+            android:id="@+id/Btn_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="addingToFav"
+            android:text="Add to Favourites"
+            app:layout_constraintBottom_toTopOf="@+id/map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

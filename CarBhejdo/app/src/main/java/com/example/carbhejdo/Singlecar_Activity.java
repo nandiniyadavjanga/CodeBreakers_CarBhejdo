@@ -44,7 +44,7 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
     private ModelClass mModelClass;
     private ImageView carImage;
     private TextView carName, carPrice, distance_travelled, condition, userReview, companyReview, owner_name, owner_contact;
-
+    String current_name="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,7 +123,7 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
             String current_contact = owner_contact.getText().toString();
             current_contact = current_contact + mobile;
             owner_contact.setText(current_contact);
-            String current_name = owner_name.getText().toString();
+            current_name = owner_name.getText().toString();
             current_name = current_name + owner_name_back;
             owner_name.setText(current_name);
             carName.setText(mModelClass.getTitle());
@@ -197,6 +197,12 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
         googleMap.addMarker(new MarkerOptions().position(sydney)
                 .title("Marker in Sydney"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    public void addingToFav(View v){
+Intent in=new Intent(this, FavouritesActivity.class);
+String currName= String.valueOf(in.putExtra("CurrentName",carName.getText().toString()));
+startActivity(in);
     }
 }
 

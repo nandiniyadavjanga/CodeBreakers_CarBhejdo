@@ -3,10 +3,10 @@ package com.example.carbhejdo;
 import java.util.ArrayList;
 
 public class Model {
-    public ArrayList<Favorite> getFavourites() {
+    public ArrayList<String> getFavourites() {
         return Favourites;
     }
-    public void setFavourites(ArrayList<Favorite> Favourites) {
+    public void setFavourites(ArrayList<String> Favourites) {
         this.Favourites = Favourites;
     }
     public static class Favorite {
@@ -25,9 +25,9 @@ public class Model {
         return model;
     }
 
-    private ArrayList<Favorite> Favourites;
+    private ArrayList<String> Favourites;
     private Model(){
-        setFavourites(new ArrayList<Favorite>());
+        setFavourites(new ArrayList<String>());
         //loadModelObjects();
     }
 
