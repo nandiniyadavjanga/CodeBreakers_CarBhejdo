@@ -25,7 +25,6 @@
             tools:srcCompat="@drawable/profile" />
 
 
-
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -33,9 +32,10 @@
             android:layout_height="200dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.574"
+            app:layout_constraintVertical_bias="0.563"
             tools:context=".Singlecar_Activity" />
 
         <ImageView
@@ -71,10 +71,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:text="Nissan"
                     android:textColor="@color/white"
-                    android:text="Nissan" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/car_price"
@@ -96,56 +96,24 @@
                     android:textColor="@color/white"                    android:text="123000 miles" />
 
                 <TextView
-                    android:id="@+id/condition"
+                    android:id="@+id/owner_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+                    android:text="Owner Name : "
+                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"                    android:text="Good Car" />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/userReview"
+                    android:id="@+id/owner_contact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+                    android:text="Owner Contact : "
+                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"                    android:text="Nice one" />
-
-                <TextView
-                    android:id="@+id/companyReview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"                    android:text="Awesome" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"                    android:text="TextView" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/email_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"                    android:text="UserName" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </ScrollView>
