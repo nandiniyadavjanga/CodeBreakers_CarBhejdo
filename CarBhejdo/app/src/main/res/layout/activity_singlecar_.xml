@@ -118,7 +118,6 @@
             android:id="@+id/Btn_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="addingToFav"
             android:text="Add to Favourites"
             app:layout_constraintBottom_toTopOf="@+id/map"
             app:layout_constraintEnd_toEndOf="parent"

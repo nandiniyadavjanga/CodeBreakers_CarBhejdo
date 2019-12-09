@@ -73,8 +73,6 @@ public class FavouritesActivity extends AppCompatActivity implements NavigationV
         fav_server = new FavouritesAdapter(favourite_model,this);
         fav_recycler = findViewById(R.id.Recycler);
         fav_recycler.setAdapter(fav_server);
-       // mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-//        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         fav_recycler.setLayoutManager(linearLayoutManager);
 

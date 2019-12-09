@@ -15,8 +15,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,9 +38,11 @@ import com.parse.ParseUser;
 import java.util.List;
 
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 
 public class Singlecar_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+    private Button Btn_fav;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private ModelClass mModelClass;
@@ -58,6 +62,42 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
 
         owner_name = findViewById(R.id.owner_name);
         owner_contact = findViewById(R.id.owner_contact);
+        Btn_fav = findViewById(R.id.Btn_fav);
+
+        Btn_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final ParseObject push_car_info = new ParseObject("userCarFav");
+                String object_id = SignUpProfileActivity.object_id;
+                if (object_id == null) {
+                    object_id = SIgninSignupActivity.object_id;
+                }
+                push_car_info.put("user_object_id", object_id);
+                push_car_info.put("car_name", mModelClass.getTitle());
+                push_car_info.put("miles_driven", mModelClass.getBody1());
+                push_car_info.put("price",mModelClass.getBody());
+                push_car_info.put("car_image_object_id", mModelClass.getImageUrl());
+
+                push_car_info.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e==null){
+                            Intent ini = new Intent(getApplicationContext(), BuyCarListActivity.class);
+                            startActivity(ini);
+                            Toast.makeText(Singlecar_Activity.this, "car added to the user faverates", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(Singlecar_Activity.this, "unable to add car added to the user faverates " + e, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+            }
+        });
+
+
+
 
 
         owner_contact.setOnClickListener(new View.OnClickListener() {
