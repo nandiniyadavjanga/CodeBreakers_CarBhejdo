@@ -21,8 +21,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FaqActivity"></activity>
-        <activity android:name=".FavouritesActivity" />
+        <activity android:name=".Favouritess"></activity>
+        <activity android:name=".FaqActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

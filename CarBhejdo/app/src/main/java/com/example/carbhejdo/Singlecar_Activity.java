@@ -213,7 +213,7 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
 
         }
         if(id==R.id.favourites){
-            Intent ini = new Intent(this,FavouritesActivity.class);
+            Intent ini = new Intent(this,Favouritess.class);
             startActivity(ini);
         }
         if(id==R.id.faq){
@@ -224,6 +224,7 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
             ParseUser.logOut();
             Intent ini = new Intent(this,SIgninSignupActivity.class);
             startActivity(ini);
+            finish();
         }
         return false;
     }
@@ -240,7 +241,7 @@ public class Singlecar_Activity extends AppCompatActivity implements NavigationV
     }
 
     public void addingToFav(View v){
-Intent in=new Intent(this, FavouritesActivity.class);
+Intent in=new Intent(this, Favouritess.class);
 String currName= String.valueOf(in.putExtra("CurrentName",carName.getText().toString()));
 startActivity(in);
     }

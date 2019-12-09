@@ -149,7 +149,7 @@ public class sellerprof extends AppCompatActivity implements NavigationView.OnNa
 
         }
         if(id==R.id.favourites){
-            Intent ini = new Intent(this,FavouritesActivity.class);
+            Intent ini = new Intent(this,Favouritess.class);
             startActivity(ini);
         }
         if(id==R.id.faq){
@@ -160,6 +160,7 @@ public class sellerprof extends AppCompatActivity implements NavigationView.OnNa
             ParseUser.logOut();
             Intent ini = new Intent(this,SIgninSignupActivity.class);
             startActivity(ini);
+            finish();
         }
         return false;
     }

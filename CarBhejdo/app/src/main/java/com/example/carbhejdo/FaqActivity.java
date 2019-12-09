@@ -71,7 +71,7 @@ public class FaqActivity extends AppCompatActivity implements NavigationView.OnN
 
         }
         if(id==R.id.favourites){
-            Intent ini = new Intent(this,FavouritesActivity.class);
+            Intent ini = new Intent(this,Favouritess.class);
             startActivity(ini);
         }
         if(id==R.id.faq){
@@ -82,6 +82,7 @@ public class FaqActivity extends AppCompatActivity implements NavigationView.OnN
             ParseUser.logOut();
             Intent ini = new Intent(this,SIgninSignupActivity.class);
             startActivity(ini);
+            finish();
         }
         return false;
     }

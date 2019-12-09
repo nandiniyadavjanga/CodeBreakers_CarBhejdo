@@ -6,22 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer"
-    tools:context=".FavouritesActivity">
-
+    tools:context=".Favouritess">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Recycler"
-        android:layout_width="130dp"
-        android:layout_height="262dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-
+        android:id="@+id/recycler_View"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="332dp" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view1"
